@@ -17,7 +17,7 @@ public interface OrderDomainService {
      *
      * Return an OrderCreatedEvent
      * */
-    OrderCreatedEvent validateAndInitiateOrder(Order order, Restaurant restaurant);
+    OrderCreatedEvent  validateAndInitiateOrder(Order order, Restaurant restaurant);
 
     OrderPaidEvent payOrder(Order order);
 
