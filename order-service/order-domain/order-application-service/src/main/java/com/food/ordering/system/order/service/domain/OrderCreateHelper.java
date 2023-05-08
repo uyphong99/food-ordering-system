@@ -28,6 +28,20 @@ public class OrderCreateHelper {
     private final RestaurantRepository restaurantRepository;
     private final OrderDataMapper orderDataMapper;
 
+
+    /**
+     * Persists a new order in the system, after validating and initiating the order using
+     * the provided {@link CreateOrderCommand}. This method first checks if the customer is
+     * valid, and if the restaurant is active. Then, it creates an order object
+     * based on the given command, and validates it using the {@link OrderDomainService}.
+     * If the order is valid, it saves it to the database and returns an {@link OrderCreatedEvent}
+     * object with the newly created order.
+     *
+     * @param createOrderCommand the {@link CreateOrderCommand} containing the order details
+     * @return an {@link OrderCreatedEvent} object with the newly created order
+     * @throws OrderDomainException if the customer is invalid
+     * @throws OrderDomainException if the restaurant is not active
+     */
     @Transactional
     public OrderCreatedEvent persistOrder(CreateOrderCommand createOrderCommand) {
         checkCustomer(createOrderCommand.getCustomerId());

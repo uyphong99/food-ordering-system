@@ -7,6 +7,10 @@ import com.food.ordering.system.order.service.domain.dto.track.TrackOrderRespons
 import jakarta.validation.Valid;
 
 public interface OrderApplicationService {
+
+    /**
+     * Persist order to DB, publish event and return CreateOrderResponse.
+     * */
     CreateOrderResponse createOrder(@Valid CreateOrderCommand createOrderCommand);
 
     TrackOrderResponse trackOrder(@Valid TrackOrderQuery trackOrderQuery);
