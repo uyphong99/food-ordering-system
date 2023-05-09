@@ -126,7 +126,9 @@ public class Order extends AggregateRoot<OrderId> {
         }
     }
 
-
+    /**
+     * Init id and orderItemId for each orderItem
+     * */
     private void initializeOrderItems() {
         long itemId = 1;
         for (OrderItem orderItem: items) {

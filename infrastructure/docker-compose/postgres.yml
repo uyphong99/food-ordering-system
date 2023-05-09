@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  database:
+    image: postgres:15.2-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: secretpassword
+    volumes:
+      - ./volumes/postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432"
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: myemail@example.com
+      PGADMIN_DEFAULT_PASSWORD: mysecretpassword
+    ports:
+      - "8888:80"
