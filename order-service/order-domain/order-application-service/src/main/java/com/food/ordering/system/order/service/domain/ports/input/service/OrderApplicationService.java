@@ -6,6 +6,9 @@ import com.food.ordering.system.order.service.domain.dto.track.TrackOrderQuery;
 import com.food.ordering.system.order.service.domain.dto.track.TrackOrderResponse;
 import jakarta.validation.Valid;
 
+/**
+ * Interface have two method: createOrder and trackOrder
+ * */
 public interface OrderApplicationService {
 
     /**

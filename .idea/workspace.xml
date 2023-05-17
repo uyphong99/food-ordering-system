@@ -5,18 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d5a9a92-0a30-47ff-a217-2ffeb7a77994" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-consumer/src/main/java/com/food/ordering/system/kafka/consumer/KafkaConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-consumer/src/main/java/com/food/ordering/system/kafka/consumer/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/KafkaMessageHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/KafkaProducerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/exception/KafkaProducerException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/service/KafkaProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/service/impl/KafkaProducerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/common-application/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/common-application/src/main/java/com/food/ordering/system/application/handler/ErrorDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/common-application/src/main/java/com/food/ordering/system/application/handler/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-application/src/main/java/com/food/ordering/system/order/service/application/exception/handler/OrderGlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-application/src/main/java/com/food/ordering/system/order/service/application/rest/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-consumer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-model/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-model/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-config-data/src/main/java/com/food/ordering/system/kafka/config/data/KafkaConfigData.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-config-data/src/main/java/com/food/ordering/system/kafka/config/data/KafkaConfigData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-config-data/src/main/java/com/food/ordering/system/kafka/config/data/KafkaConsumerConfigData.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-config-data/src/main/java/com/food/ordering/system/kafka/config/data/KafkaConsumerConfigData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-config-data/src/main/java/com/food/ordering/system/kafka/config/data/KafkaProducerConfigData.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-config-data/src/main/java/com/food/ordering/system/kafka/config/data/KafkaProducerConfigData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/KafkaProducerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-application/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-container/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-container/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/input/service/OrderApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/input/service/OrderApplicationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +68,7 @@
     "WebServerToolWindowFactoryState": "false",
     "go.import.settings.migrated": "true",
     "jdk.selected.JAVA_MODULE": "jbr-17",
-    "last_opened_file_path": "C:/Users/ibm/microservice-project/food-ordering-system/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer",
+    "last_opened_file_path": "C:/Users/ibm/Downloads/foodorder",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,6 +84,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.food.ordering.system.order.service.application.exception.handler" />
       <recent name="com.food.ordering.system.order.service.domain.dto.message" />
       <recent name="com.food.ordering.system.order.service.domain.dto.create" />
     </key>
@@ -184,7 +189,7 @@
       <workItem from="1683885102957" duration="18336000" />
       <workItem from="1683996297780" duration="4104000" />
       <workItem from="1684036767350" duration="16845000" />
-      <workItem from="1684209672176" duration="2048000" />
+      <workItem from="1684209672176" duration="28004000" />
     </task>
     <servers />
   </component>
