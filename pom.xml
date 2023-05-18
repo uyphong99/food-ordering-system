@@ -16,6 +16,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <packaging>pom</packaging>
+
     <modules>
         <module>order-service</module>
         <module>common</module>
@@ -23,12 +24,13 @@
     </modules>
 
     <properties>
-        <maven-compiler-plugin.verison>3.10.1</maven-compiler-plugin.verison>
+        <maven-compiler-plugin.verison>3.8.1</maven-compiler-plugin.verison>
         <mockito.version>4.8.1</mockito.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-kafka.version>3.0.6</spring-kafka.version>
         <kafka-avro-serializer.version>7.3.3</kafka-avro-serializer.version>
         <avro.version>1.11.0</avro.version>
+        <lombok.version>1.18.24</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -72,27 +74,27 @@
             <dependency>
                 <groupId>com.food.ordering.system</groupId>
                 <artifactId>kafka-producer</artifactId>
-                <version>{project.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.food.ordering.system</groupId>
                 <artifactId>kafka-consumer</artifactId>
-                <version>{project.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.food.ordering.system</groupId>
                 <artifactId>kafka-model</artifactId>
-                <version>{project.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.food.ordering.system</groupId>
                 <artifactId>kafka-config-data</artifactId>
-                <version>{project.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.food.ordering.system</groupId>
                 <artifactId>common-application</artifactId>
-                <version>{project.version}</version>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

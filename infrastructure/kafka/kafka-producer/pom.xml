@@ -15,12 +15,10 @@
         <dependency>
             <groupId>com.food.ordering.system</groupId>
             <artifactId>kafka-model</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.food.ordering.system</groupId>
             <artifactId>kafka-config-data</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.food.ordering.system</groupId>
