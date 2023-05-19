@@ -5,14 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d5a9a92-0a30-47ff-a217-2ffeb7a77994" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/customer/adapter/CustomerRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/customer/entity/CustomerEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/customer/mapper/CustomerDataAccessMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/customer/repository/CustomerJpaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/order/adapter/OrderRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/order/entity/OrderAddressEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/order/entity/OrderEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/order/entity/OrderItemEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/order/entity/OrderItemEntityId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/order/mapper/OrderDataAccessMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/order/repository/OrderJpaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/restaurant/adapter/RestaurantRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/restaurant/entity/RestaurantEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/restaurant/entity/RestaurantEntityId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/restaurant/exception/RestaurantDataAccessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/restaurant/mapper/RestaurantDataAccessMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/restaurant/repository/RestaurantJpaRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-config-data/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-config-data/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-config-data/src/main/java/com/food/ordering/system/kafka/config/data/KafkaConsumerConfigData.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-config-data/src/main/java/com/food/ordering/system/kafka/config/data/KafkaConsumerConfigData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/order-container/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-container/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/order-dataaccess/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-dataaccess/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-domain-core/src/main/java/com/food/ordering/system/order/service/domain/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-domain-core/src/main/java/com/food/ordering/system/order/service/domain/entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-domain-core/src/main/java/com/food/ordering/system/order/service/domain/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-domain-core/src/main/java/com/food/ordering/system/order/service/domain/entity/Order.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +73,7 @@
     "WebServerToolWindowFactoryState": "false",
     "go.import.settings.migrated": "true",
     "jdk.selected.JAVA_MODULE": "jbr-17",
-    "last_opened_file_path": "C:/Users/ibm/Downloads/foodorder",
+    "last_opened_file_path": "C:/Users/ibm/microservice-project/food-ordering-system/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/restaurant",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -75,15 +89,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.food.ordering.system.order.service.dataaccess.restaurant.exception" />
+      <recent name="com.food.ordering.system.order.service.dataaccess.restaurant.mapper" />
+      <recent name="com.food.ordering.system.order.service.dataaccess.order.entity" />
       <recent name="com.food.ordering.system.order.service.application.exception.handler" />
       <recent name="com.food.ordering.system.order.service.domain.dto.message" />
-      <recent name="com.food.ordering.system.order.service.domain.dto.create" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\order-service\order-dataaccess\src\main\java\com\food\ordering\system\order\service\dataaccess\restaurant" />
+      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\order-service\order-dataaccess\src\main\java\com\food\ordering\system\order\service\dataaccess\customer" />
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\infrastructure\kafka\kafka-producer\src\main\java\com\food\ordering\system\kafka\producer" />
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\infrastructure\kafka\kafka-model\src\main\resources\avro" />
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\infrastructure\kafka\kafka-config-data\src\main\java\com\food\ordering\system\kafka\config\data" />
-      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\infrastructure\docker-compose" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\infrastructure\docker-compose" />
@@ -181,7 +198,7 @@
       <workItem from="1683996297780" duration="4104000" />
       <workItem from="1684036767350" duration="16845000" />
       <workItem from="1684209672176" duration="43605000" />
-      <workItem from="1684387683044" duration="3037000" />
+      <workItem from="1684387683044" duration="28757000" />
     </task>
     <servers />
   </component>

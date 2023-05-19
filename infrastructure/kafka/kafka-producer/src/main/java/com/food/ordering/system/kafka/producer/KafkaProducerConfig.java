@@ -2,13 +2,10 @@ package com.food.ordering.system.kafka.producer;
 
 import com.food.ordering.system.kafka.config.data.KafkaConfigData;
 import com.food.ordering.system.kafka.config.data.KafkaProducerConfigData;
-import lombok.AllArgsConstructor;
 import org.apache.avro.specific.SpecificRecordBase;
 import org.apache.kafka.clients.producer.ProducerConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;

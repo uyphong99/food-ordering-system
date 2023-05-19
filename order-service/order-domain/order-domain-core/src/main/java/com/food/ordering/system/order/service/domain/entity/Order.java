@@ -23,6 +23,8 @@ public class Order extends AggregateRoot<OrderId> {
     private OrderStatus orderStatus;
     private List<String> failureMessages;
 
+    public static final String FAILURE_MESSAGE_DELIMITER = ",";
+
     /**
      * Set ID to new OrderId (random UUID), init tracking id (random UUID)
      * and init status to Pending,
