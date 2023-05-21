@@ -13,6 +13,8 @@ import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.io.Serializable;
+import java.util.concurrent.CompletableFuture;
+
 @Slf4j
 @Component
 public class KafkaProducerImpl<K extends Serializable, V extends SpecificRecordBase> implements KafkaProducer<K, V> {

@@ -10,6 +10,9 @@ services:
       - ./volumes/postgres-data:/var/lib/postgresql/data
     ports:
       - "5432"
+    networks:
+      - ${GLOBAL_NETWORK:-kafka}
+      - db
   pgadmin:
     image: dpage/pgadmin4:latest
     restart: always
@@ -18,3 +21,6 @@ services:
       PGADMIN_DEFAULT_PASSWORD: mysecretpassword
     ports:
       - "8888:80"
+    networks:
+      - db
+

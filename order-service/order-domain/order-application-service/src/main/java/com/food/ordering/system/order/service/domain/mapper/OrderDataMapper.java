@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.UUID;
 /**
- * A class for mapping entity to DTO and vice versa.
+ * [order-application-service] A class for mapping domain entity to DTO and vice versa.
  * */
 @Component
 public class OrderDataMapper {
