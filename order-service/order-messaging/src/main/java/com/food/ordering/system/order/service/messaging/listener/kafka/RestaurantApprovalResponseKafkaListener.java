@@ -19,7 +19,9 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+/**
+ * Kafka consumer in order service, this consumer subscribes to Restaurant response topic
+ * */
 @AllArgsConstructor
 @Slf4j
 @Component

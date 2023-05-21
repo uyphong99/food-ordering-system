@@ -16,6 +16,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * Consumer for payment response topic
+ * */
 @AllArgsConstructor
 @Component
 @Slf4j

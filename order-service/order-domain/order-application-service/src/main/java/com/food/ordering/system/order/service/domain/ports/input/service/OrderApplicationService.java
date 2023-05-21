@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 
 /**
  * Interface have two method: createOrder and trackOrder
+ * Will be used by OrderController in order-application module
  * */
 public interface OrderApplicationService {
 

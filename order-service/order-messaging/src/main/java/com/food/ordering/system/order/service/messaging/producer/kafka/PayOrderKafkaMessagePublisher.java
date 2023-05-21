@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * Publish
+ * Publish paid for order event to restaurant request topic.
  * */
 @Slf4j
 @Component
