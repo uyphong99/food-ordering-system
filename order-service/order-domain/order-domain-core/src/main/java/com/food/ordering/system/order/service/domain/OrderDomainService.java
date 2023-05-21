@@ -7,7 +7,11 @@ import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
 import com.food.ordering.system.order.service.domain.event.OrderPaidEvent;
 
 import java.util.List;
-
+/**
+ * [order-domain-core]
+ * Response for operation relate with order domain.
+ * Method: validate init order, pay order, approve order, cancel order payment, cancel order.
+ * */
 public interface OrderDomainService {
 
     /**

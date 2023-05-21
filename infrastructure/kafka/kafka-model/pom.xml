@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>kafka-model</artifactId>
-    <packaging>pom</packaging>
+
 
     <dependencies>
         <dependency>
