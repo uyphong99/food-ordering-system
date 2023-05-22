@@ -7,8 +7,12 @@ import com.food.ordering.system.order.service.domain.dto.track.TrackOrderRespons
 import jakarta.validation.Valid;
 
 /**
- * Interface have two method: createOrder and trackOrder
- * Will be used by OrderController in order-application module
+ * Interface have two method: createOrder and trackOrder.
+ * Will be used by OrderController in order-application module.
+ *
+ * Allows the isolated domain to communicate with outside. Orchestrate transactions,
+ * security, looking up proper aggregates and saving state changes of the domain to the database.
+ * Doesn't contain any business logic.
  * */
 public interface OrderApplicationService {
 

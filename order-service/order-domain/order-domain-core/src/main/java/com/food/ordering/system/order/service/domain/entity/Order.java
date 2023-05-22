@@ -10,7 +10,10 @@ import lombok.Getter;
 
 import java.util.List;
 import java.util.UUID;
-
+/**
+ * Aggregate root of order, contains:
+ *
+ * */
 @Getter
 public class Order extends AggregateRoot<OrderId> {
     private final CustomerId customerId;
@@ -26,7 +29,7 @@ public class Order extends AggregateRoot<OrderId> {
     public static final String FAILURE_MESSAGE_DELIMITER = ",";
 
     /**
-     * Set ID to new OrderId (random UUID), init tracking id (random UUID)
+     * Set ID for new OrderId (random UUID), init tracking id (random UUID)
      * and init status to Pending,
      * */
     public void initializeOrder() {
@@ -67,7 +70,9 @@ public class Order extends AggregateRoot<OrderId> {
 
         orderStatus = OrderStatus.APPROVE;
     }
-
+    /**
+     * Check the order status, if order wasn't paid, change status to cancelling.
+     * */
     public void initCancel(List<String> failureMessages) {
         if (orderStatus != OrderStatus.PAID) {
             throw new OrderDomainException("Order is not in correct state for canceling order.");
@@ -103,6 +108,9 @@ public class Order extends AggregateRoot<OrderId> {
         }
     }
 
+    /**
+     * Price must be greater than zero than not be null.
+     * */
     private void validateTotalPrice() {
         if (price == null || !price.isGreaterThanZero()) {
             throw new OrderDomainException("Total price must be greater than zero!");
