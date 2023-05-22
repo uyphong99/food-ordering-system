@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 /**
- * Map event in domain core to avro model
+ * Map event in domain core to avro model and vice versa.
  * */
 @Component
 public class OrderMessagingDataMapper {

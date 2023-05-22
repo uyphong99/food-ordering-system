@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 /**
- * Receive cancel event and publish event in avro form to PaymentTopic
+ * Publish cancel order event in avro form to payment request topic
  * */
 @Slf4j
 @Component

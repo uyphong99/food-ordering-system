@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 /**
- * Map event to avro model and publish to payment topic
+ * Publish create order event to payment request topic
  * */
 @Component
 @Slf4j

@@ -10,7 +10,10 @@ import java.util.List;
 /**
  * [order-domain-core]
  * Response for operation relate with order domain.
- * Method: validate init order, pay order, approve order, cancel order payment, cancel order.
+ * - Method: validate init order, pay order, approve order, cancel order payment, cancel order.
+ *
+ * - Business logic that cannot fit in the aggregate. Used when multiple aggregates required in business logic.
+ * Can interact with other domain services.
  * */
 public interface OrderDomainService {
 
