@@ -13,11 +13,11 @@ import java.util.UUID;
 @AllArgsConstructor
 public class OrderItem {
     @NotNull
-    private final UUID productId;
+    private UUID productId;
     @NotNull
-    private final Integer quantity;
+    private Integer quantity;
     @NotNull
-    private final BigDecimal price;
+    private BigDecimal price;
     @NotNull
-    private final BigDecimal subTotal;
+    private BigDecimal subTotal;
 }

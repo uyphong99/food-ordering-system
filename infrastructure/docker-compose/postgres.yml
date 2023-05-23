@@ -12,7 +12,6 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - ${GLOBAL_NETWORK:-kafka}
       - db
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -21,7 +20,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: myemail@example.com
       PGADMIN_DEFAULT_PASSWORD: mysecretpassword
     ports:
-      - "8888:80"
+      - "5050:5050"
     networks:
       - db
 
