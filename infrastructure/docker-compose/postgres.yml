@@ -5,11 +5,12 @@ services:
     image: postgres:15.2-alpine
     restart: always
     environment:
-      POSTGRES_PASSWORD: secretpassword
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
     volumes:
       - ./volumes/postgres-data:/var/lib/postgresql/data
     ports:
-      - "5432"
+      - "5432:5432"
     networks:
       - ${GLOBAL_NETWORK:-kafka}
       - db

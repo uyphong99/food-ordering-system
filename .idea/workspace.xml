@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d5a9a92-0a30-47ff-a217-2ffeb7a77994" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/order-service/order-container/src/main/java/com/food/ordering/system/order/service/domain/BeanConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-container/src/main/java/com/food/ordering/system/order/service/domain/OrderServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-container/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-container/src/main/resources/init-schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/input/service/OrderApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/input/service/OrderApplicationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-domain-core/src/main/java/com/food/ordering/system/order/service/domain/OrderDomainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-domain-core/src/main/java/com/food/ordering/system/order/service/domain/OrderDomainService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-domain-core/src/main/java/com/food/ordering/system/order/service/domain/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-domain-core/src/main/java/com/food/ordering/system/order/service/domain/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/docker-compose/postgres.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/docker-compose/postgres.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-container/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-container/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +29,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/order-service/order-container/src/main/resources/application.yml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -45,30 +51,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ibm/microservice-project/food-ordering-system/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/restaurant&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;9104ebaffd053501124247babcd6dc53&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "jdk.selected.JAVA_MODULE": "jbr-17",
+    "last_opened_file_path": "C:/Users/ibm/microservice-project/food-ordering-system/order-service/order-container/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "9104ebaffd053501124247babcd6dc53",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.food.ordering.system.order.service.dataaccess.restaurant.exception" />
@@ -78,11 +84,11 @@
       <recent name="com.food.ordering.system.order.service.domain.dto.message" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\order-service\order-container\src\main\resources" />
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\order-service\order-dataaccess\src\main\java\com\food\ordering\system\order\service\dataaccess\restaurant" />
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\order-service\order-dataaccess\src\main\java\com\food\ordering\system\order\service\dataaccess\customer" />
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\infrastructure\kafka\kafka-producer\src\main\java\com\food\ordering\system\kafka\producer" />
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\infrastructure\kafka\kafka-model\src\main\resources\avro" />
-      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\infrastructure\kafka\kafka-config-data\src\main\java\com\food\ordering\system\kafka\config\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\infrastructure\docker-compose" />
@@ -153,6 +159,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OrderServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="order-container" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.food.ordering.system.order.service.domain.OrderServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.OrderApplicationServiceTest" />
@@ -182,7 +195,7 @@
       <workItem from="1684209672176" duration="43605000" />
       <workItem from="1684387683044" duration="43549000" />
       <workItem from="1684515945925" duration="6185000" />
-      <workItem from="1684561502397" duration="35783000" />
+      <workItem from="1684561502397" duration="50966000" />
     </task>
     <servers />
   </component>
