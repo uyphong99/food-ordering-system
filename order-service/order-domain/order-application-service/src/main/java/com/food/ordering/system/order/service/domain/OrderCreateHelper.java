@@ -30,12 +30,9 @@ public class OrderCreateHelper {
 
 
     /**
-     * Persists a new order in the system, after validating and initiating the order using
-     * the provided {@link CreateOrderCommand}. This method first checks if the customer is
-     * valid, and if the restaurant is active. Then, it creates an order object
-     * based on the given command, and validates it using the {@link OrderDomainService}.
-     * If the order is valid, it saves it to the database and returns an {@link OrderCreatedEvent}
-     * object with the newly created order.
+     * Save order to database after check the customer and restaurant.
+     * Map order command to order and save order to DB.
+     * And return a OrderCreateEvent
      *
      * @param createOrderCommand the {@link CreateOrderCommand} containing the order details
      * @return an {@link OrderCreatedEvent} object with the newly created order
@@ -64,6 +61,9 @@ public class OrderCreateHelper {
         return optionalRestaurant.get();
     }
 
+    /**
+     * Check if customer exist and throw exception if not exist
+     * */
     private void checkCustomer(UUID customerId) {
         Optional<Customer> customer = customerRepository.findCustomer(customerId);
         if (customer.isEmpty()) {
@@ -71,6 +71,7 @@ public class OrderCreateHelper {
             throw new OrderDomainException("Could not find customer with id: " + customerId);
         }
     }
+
 
     private Order saveOrder(Order order) {
         Order orderResult = orderRepository.save(order);

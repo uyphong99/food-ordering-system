@@ -23,7 +23,7 @@ public class OrderCreateCommandHandler {
 
     /**
      * Creates a new order based on the provided {@link CreateOrderCommand}.
-     * It then logs the creation of the order and publishes an order created event using the
+     * Publishes an order created event using the
      * {@link OrderCreatedPaymentRequestMessagePublisher}. Finally, it maps the created order to a
      * {@link CreateOrderResponse} using the {@link OrderDataMapper} and returns the response indicating
      * a successful order creation.

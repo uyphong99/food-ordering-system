@@ -2,6 +2,7 @@ version: '3.7'
 services:
   init-kafka:
     image: confluentinc/cp-kafka:${KAFKA_VERSION}
+    container_name: init_kafka
     entrypoint: [ '/bin/sh', '-c' ]
     command: |
       "
