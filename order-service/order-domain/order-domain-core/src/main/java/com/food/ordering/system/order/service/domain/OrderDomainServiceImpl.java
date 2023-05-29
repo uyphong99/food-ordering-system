@@ -12,9 +12,12 @@ import lombok.extern.slf4j.Slf4j;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
+
+import static com.food.ordering.system.domain.DomainConstants.UTC;
+
 @Slf4j
 public class OrderDomainServiceImpl implements OrderDomainService{
-    private static final String UTC = "UTC";
+
 
     /**
      * valid the restaurant, update order products, and create CreatedEvent
