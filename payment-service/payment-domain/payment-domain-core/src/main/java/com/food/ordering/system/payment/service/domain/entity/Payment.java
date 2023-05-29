@@ -69,20 +69,29 @@ public class Payment extends AggregateRoot<PaymentId> {
 
     public static final class Builder {
         private PaymentId paymentId;
-        private final OrderId orderId;
-        private final CustomerId customerId;
-        private final Money price;
+        private OrderId orderId;
+        private CustomerId customerId;
+        private Money price;
         private PaymentStatus paymentStatus;
         private ZonedDateTime createdAt;
 
-        public Builder(OrderId orderId, CustomerId customerId, Money price) {
-            this.orderId = orderId;
-            this.customerId = customerId;
-            this.price = price;
+        public Builder paymentId(PaymentId val) {
+            paymentId = val;
+            return this;
         }
 
-        public Builder id(PaymentId val) {
-            paymentId = val;
+        public Builder orderId(OrderId val) {
+            this.orderId = val;
+            return this;
+        }
+
+        public Builder customerId(CustomerId val) {
+            this.customerId = val;
+            return this;
+        }
+
+        public Builder price(Money val) {
+            this.price = val;
             return this;
         }
 

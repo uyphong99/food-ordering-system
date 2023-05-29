@@ -14,7 +14,7 @@ public class CreditHistory extends BaseEntity<CreditHistoryId> {
     private final TransactionType transactionType;
 
     private CreditHistory(Builder builder) {
-        setId(new CreditHistoryId(UUID.randomUUID()));
+        setId(builder.creditHistoryId);
         customerId = builder.customerId;
         amount = builder.amount;
         transactionType = builder.transactionType;
@@ -25,13 +25,13 @@ public class CreditHistory extends BaseEntity<CreditHistoryId> {
     }
 
     public static final class Builder {
-        private CreditHistoryId id;
+        private CreditHistoryId creditHistoryId;
         private CustomerId customerId;
         private Money amount;
         private TransactionType transactionType;
 
-        public Builder id(CreditHistoryId val) {
-            this.id = val;
+        public Builder creditHistory(CreditHistoryId val) {
+            this.creditHistoryId = val;
             return this;
         }
 

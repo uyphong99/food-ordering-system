@@ -29,7 +29,7 @@ public class CreditEntry extends BaseEntity<CreditEntryId> {
     }
 
     private CreditEntry(Builder builder) {
-        setId(new CreditEntryId(UUID.randomUUID()));
+        setId(builder.creditEntryId);
         customerId = builder.customerId;
         totalCreditAmount = builder.totalCreditAmount;
     }
@@ -39,7 +39,7 @@ public class CreditEntry extends BaseEntity<CreditEntryId> {
     }
 
     public static final class Builder {
-        private CreditEntryId id;
+        private CreditEntryId creditEntryId;
         private CustomerId customerId;
         private Money totalCreditAmount;
 
@@ -49,7 +49,7 @@ public class CreditEntry extends BaseEntity<CreditEntryId> {
         }
 
         public Builder id(CreditEntryId val) {
-            id = val;
+            creditEntryId = val;
             return this;
         }
 
