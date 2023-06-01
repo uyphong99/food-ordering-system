@@ -1,10 +1,12 @@
 package com.food.ordering.system.payment.service.domain;
 
+import com.food.ordering.system.domain.event.publisher.DomainEventPublisher;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.PaymentStatus;
 import com.food.ordering.system.payment.service.domain.entity.CreditEntry;
 import com.food.ordering.system.payment.service.domain.entity.CreditHistory;
 import com.food.ordering.system.payment.service.domain.entity.Payment;
+import com.food.ordering.system.payment.service.domain.event.PaymentCancelledEvent;
 import com.food.ordering.system.payment.service.domain.event.PaymentCompletedEvent;
 import com.food.ordering.system.payment.service.domain.event.PaymentEvent;
 import com.food.ordering.system.payment.service.domain.event.PaymentFailedEvent;
@@ -21,8 +23,18 @@ import static com.food.ordering.system.domain.DomainConstants.UTC;
 
 @Slf4j
 public class PaymentDomainServiceImpl implements PaymentDomainService{
+
+
+    /**
+     * validate and init payment, then perform payment and update history.
+     * */
     @Override
-    public PaymentEvent validateAndInitiatePayment(Payment payment, CreditEntry creditEntry, List<CreditHistory> creditHistories, List<String> failureMessages) {
+    public PaymentEvent validateAndInitiatePayment(Payment payment,
+                                                   CreditEntry creditEntry,
+                                                   List<CreditHistory> creditHistories,
+                                                   List<String> failureMessages,
+                                                   DomainEventPublisher<PaymentCompletedEvent> paymentCompletedEventDomainEventPublisher,
+                                                   DomainEventPublisher<PaymentFailedEvent> paymentFailedEventPublisher) {
         payment.validatePayment(failureMessages);
         payment.initializePayment();
         validateCreditEntry(payment, creditEntry, failureMessages);
@@ -33,24 +45,38 @@ public class PaymentDomainServiceImpl implements PaymentDomainService{
         if (failureMessages.isEmpty()) {
             log.info("Payment is initiated for order id: {}", payment.getOrderId());
             payment.updateStatus(PaymentStatus.COMPLETED);
-            return new PaymentCompletedEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), failureMessages);
+            return new PaymentCompletedEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), paymentCompletedEventDomainEventPublisher);
         } else {
             log.info("Payment initiation is failed for order id: {}", payment.getOrderId().getValue());
             payment.updateStatus(PaymentStatus.FAILED);
-            return new PaymentFailedEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), failureMessages);
+            return new PaymentFailedEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), failureMessages, paymentFailedEventPublisher);
         }
     }
-
+    /**
+     * Response for cancel payment by refund to credit entry and update credit history.
+     *
+     * */
     @Override
-    public PaymentEvent validateAndCancelPayment(Payment payment, CreditEntry creditEntry, List<CreditHistory> creditHistories, List<String> failureMessages) {
+    public PaymentEvent validateAndCancelPayment(Payment payment,
+                                                 CreditEntry creditEntry,
+                                                 List<CreditHistory> creditHistories, List<String> failureMessages,
+                                                 DomainEventPublisher<PaymentCancelledEvent> paymentCancelledEventPublisher,
+                                                 DomainEventPublisher<PaymentFailedEvent> paymentFailedEventPublisher) {
         payment.validatePayment(failureMessages);
         addCreditEntry(payment, creditEntry);
         updateCreditHistory(payment, creditHistories, TransactionType.CREDIT);
+
+        if (failureMessages.isEmpty()) {
+            log.info("Payment is cancelled for order id: {}", payment.getOrderId().getValue());
+            payment.updateStatus(PaymentStatus.CANCELLED);
+            return new PaymentCancelledEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), paymentCancelledEventPublisher);
+        } else {
+            log.info("Payment cancellation is failed for order id: {}", payment.getOrderId().getValue());
+            payment.updateStatus(PaymentStatus.FAILED);
+            return new PaymentFailedEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), failureMessages, paymentFailedEventPublisher);
+        }
     }
 
-    private void addCreditEntry(Payment payment, CreditEntry creditEntry) {
-        creditEntry.addCreditAmount(payment.getPrice());
-    }
 
     /**
      * Check if credit (the money in customer account) is enough for payment
@@ -69,6 +95,12 @@ public class PaymentDomainServiceImpl implements PaymentDomainService{
     private void subtractCreditEntry(Payment payment, CreditEntry creditEntry) {
         creditEntry.subtractCreditAmount(payment.getPrice());
     }
+    /**
+     * refund money to customer in case the cancelled order
+     * */
+    private void addCreditEntry(Payment payment, CreditEntry creditEntry) {
+        creditEntry.addCreditAmount(payment.getPrice());
+    }
 
     /**
      * Add new credit history (customer's payment history)
@@ -81,6 +113,11 @@ public class PaymentDomainServiceImpl implements PaymentDomainService{
                         .transactionType(transactionType)
                 .build());
     }
+
+    /**
+     * Total credit should be greater than or equal to total debit.
+     * The credit entry (money that customer have) should equal to total credit subtract total debit.
+     * */
     private void validateCreditHistory(CreditEntry creditEntry, List<CreditHistory> creditHistories, List<String> failureMessages) {
         Money totalCreditHistory = getTotalHistoryAmount(creditHistories, TransactionType.CREDIT);
 
@@ -92,7 +129,7 @@ public class PaymentDomainServiceImpl implements PaymentDomainService{
             failureMessages.add("Customer with id=" + creditEntry.getCustomerId().getValue() + " doesn't have enough credit according to credit history!");
         }
 
-        if (creditEntry.getTotalCreditAmount().equals(totalCreditHistory.subtract(totalCreditHistory))) {
+        if (!creditEntry.getTotalCreditAmount().equals(totalCreditHistory.subtract(totalDebitHistory))) {
             log.error("Credit history total is not equal to current credit for customer id: {}",
                     creditEntry.getCustomerId().getValue());
             failureMessages.add("Credit history total is not equal to current credit for customer id: " +
@@ -100,6 +137,9 @@ public class PaymentDomainServiceImpl implements PaymentDomainService{
         }
     }
 
+    /**
+     * Get amount of money according to the transaction type.
+     * */
     private static Money getTotalHistoryAmount(List<CreditHistory> creditHistories, TransactionType transactionType) {
         return creditHistories.stream()
                 .filter(creditHistory -> transactionType == creditHistory.getTransactionType())
