@@ -27,6 +27,9 @@ public class Payment extends AggregateRoot<PaymentId> {
         createdAt = ZonedDateTime.now();
     }
 
+    /**
+     * Price is not null and greater than zero
+     * */
     public void validatePayment(List<String> failureMessage) {
         if (price == null || !price.isGreaterThanZero()) {
             failureMessage.add("Total price must be greater than zero!");
@@ -64,6 +67,10 @@ public class Payment extends AggregateRoot<PaymentId> {
         price = builder.price;
         paymentStatus = builder.paymentStatus;
         createdAt = builder.createdAt;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
 

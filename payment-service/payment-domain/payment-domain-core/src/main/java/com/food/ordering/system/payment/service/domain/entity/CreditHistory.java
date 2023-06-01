@@ -6,7 +6,6 @@ import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.payment.service.domain.valueobject.CreditHistoryId;
 import com.food.ordering.system.payment.service.domain.valueobject.TransactionType;
 
-import java.util.UUID;
 
 public class CreditHistory extends BaseEntity<CreditHistoryId> {
     private final CustomerId customerId;
