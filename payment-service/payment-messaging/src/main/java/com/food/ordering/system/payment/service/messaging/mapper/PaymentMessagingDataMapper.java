@@ -1,7 +1,9 @@
 package com.food.ordering.system.payment.service.messaging.mapper;
 
+import com.food.ordering.system.kafka.order.avro.model.PaymentRequestAvroModel;
 import com.food.ordering.system.kafka.order.avro.model.PaymentResponseAvroModel;
 import com.food.ordering.system.kafka.order.avro.model.PaymentStatus;
+import com.food.ordering.system.payment.service.domain.dto.PaymentRequest;
 import com.food.ordering.system.payment.service.domain.event.PaymentCancelledEvent;
 import com.food.ordering.system.payment.service.domain.event.PaymentCompletedEvent;
 import com.food.ordering.system.payment.service.domain.event.PaymentFailedEvent;
@@ -44,6 +46,17 @@ public class PaymentMessagingDataMapper {
                 .setPrice(paymentFailedEvent.getPayment().getPrice().getAmount())
                 .setPaymentStatus(PaymentStatus.valueOf(paymentFailedEvent.getPayment().getPaymentStatus().toString()))
                 .setCreatedAt(paymentFailedEvent.getCreatedAt().toInstant())
+                .build();
+    }
+
+    public PaymentRequest paymentAvroModelToPaymentRequest(PaymentRequestAvroModel paymentRequestAvroModel) {
+        return PaymentRequest.builder()
+                .id(paymentRequestAvroModel.getId())
+                .sagaId(paymentRequestAvroModel.getSagaId())
+                .orderId(paymentRequestAvroModel.getOrderId())
+                .customerId(paymentRequestAvroModel.getCustomerId())
+                .price(paymentRequestAvroModel.getPrice())
+                .createdAt(paymentRequestAvroModel.getCreatedAt())
                 .build();
     }
 }

@@ -2,6 +2,7 @@ package com.food.ordering.system.payment.service.domain;
 
 import com.food.ordering.system.domain.event.publisher.DomainEventPublisher;
 import com.food.ordering.system.domain.valueobject.CustomerId;
+import com.food.ordering.system.domain.valueobject.PaymentStatus;
 import com.food.ordering.system.payment.service.domain.dto.PaymentRequest;
 import com.food.ordering.system.payment.service.domain.entity.CreditEntry;
 import com.food.ordering.system.payment.service.domain.entity.CreditHistory;
@@ -37,14 +38,14 @@ public class PaymentRequestHelper {
     private final CreditHistoryRepository creditHistoryRepository;
     private final PaymentCancelledMessagePublisher paymentCancelledEventPublisher;
     private final PaymentFailedMessagePublisher paymentFailedEventPublisher;
+    private final PaymentCompletedMessagePublisher paymentCompletedEventPublisher;
 
     @Transactional
     public PaymentEvent persistPayment(PaymentRequest paymentRequest) {
         log.info("Received payment complete event for order if: {}", paymentRequest.getOrderId());
         Payment payment = paymentDataMapper.paymentRequestToPayment(paymentRequest);
-        PaymentEvent paymentEvent = paymentToPaymentEvent(payment);
 
-        return paymentEvent;
+        return paymentToPaymentEvent(payment);
     }
 
     @Transactional
@@ -58,9 +59,8 @@ public class PaymentRequestHelper {
         }
 
         Payment payment = paymentResponse.get();
-        PaymentEvent paymentEvent = paymentToPaymentEvent(payment);
 
-        return paymentEvent;
+        return paymentToPaymentEvent(payment);
     }
 
     /**
@@ -70,8 +70,16 @@ public class PaymentRequestHelper {
         CreditEntry creditEntry = getCreditEntry(payment.getCustomerId());
         List<CreditHistory> creditHistories = getCreditHistories(payment.getCustomerId());
         List<String> failureMessages = new ArrayList<>();
-        PaymentEvent paymentEvent = paymentDomainService.validateAndCancelPayment(payment, creditEntry, creditHistories,
-                failureMessages, paymentCancelledEventPublisher, paymentFailedEventPublisher);
+        PaymentStatus paymentStatus = payment.getPaymentStatus();
+        PaymentEvent paymentEvent;
+
+        if (paymentStatus.equals(PaymentStatus.CANCELLED)) {
+            paymentEvent = paymentDomainService.validateAndCancelPayment(payment, creditEntry, creditHistories,
+                    failureMessages, paymentCancelledEventPublisher, paymentFailedEventPublisher);
+        } else {
+            paymentEvent = paymentDomainService.validateAndInitiatePayment(payment, creditEntry, creditHistories,
+                    failureMessages, paymentCompletedEventPublisher, paymentFailedEventPublisher);
+        }
 
         persistDbObject(payment, creditEntry, creditHistories, failureMessages);
 
