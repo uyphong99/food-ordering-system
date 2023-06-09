@@ -33,11 +33,11 @@ import static org.mockito.Mockito.when;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest(classes = OrderTestConfiguration.class)
 public class OrderApplicationServiceTest {
-    private OrderApplicationService orderApplicationService;
-    private OrderDataMapper orderDataMapper;
-    private OrderRepository orderRepository;
-    private CustomerRepository customerRepository;
-    private RestaurantRepository restaurantRepository;
+    private final OrderApplicationService orderApplicationService;
+    private final OrderDataMapper orderDataMapper;
+    private final OrderRepository orderRepository;
+    private final CustomerRepository customerRepository;
+    private final RestaurantRepository restaurantRepository;
     private CreateOrderCommand createOrderCommand;
     private CreateOrderCommand createOrderCommandWrongPrice;
     private CreateOrderCommand createOrderCommandWrongProductPrice;

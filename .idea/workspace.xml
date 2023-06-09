@@ -4,7 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d5a9a92-0a30-47ff-a217-2ffeb7a77994" name="Changes" comment="" />
+    <list default="true" id="8d5a9a92-0a30-47ff-a217-2ffeb7a77994" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/test/java/com/food/ordering/system/service/domain/PaymentRequestHelperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/test/java/com/food/ordering/system/service/domain/PaymentTestConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/test/java/com/food/ordering/system/service/domain/service/PaymentDomainServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/common-domain/src/main/java/com/food/ordering/system/domain/valueobject/BaseId.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/common-domain/src/main/java/com/food/ordering/system/domain/valueobject/BaseId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/common-domain/src/main/java/com/food/ordering/system/domain/valueobject/Money.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/common-domain/src/main/java/com/food/ordering/system/domain/valueobject/Money.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/input/service/OrderApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/input/service/OrderApplicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/message/publisher/payment/OrderCancelledPaymentRequestMessagePublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/message/publisher/payment/OrderCancelledPaymentRequestMessagePublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/message/publisher/payment/OrderCreatedPaymentRequestMessagePublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/message/publisher/payment/OrderCreatedPaymentRequestMessagePublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/message/publisher/restaurantapproval/OrderPaidRestaurantRequestMessagePublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/message/publisher/restaurantapproval/OrderPaidRestaurantRequestMessagePublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/repository/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/repository/RestaurantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/repository/RestaurantRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/test/java/com/food/ordering/system/order/service/domain/OrderApplicationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/test/java/com/food/ordering/system/order/service/domain/OrderApplicationServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java/com/food/ordering/system/payment/service/domain/PaymentRequestHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java/com/food/ordering/system/payment/service/domain/PaymentRequestHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java/com/food/ordering/system/payment/service/domain/PaymentRequestMessageListenerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java/com/food/ordering/system/payment/service/domain/PaymentRequestMessageListenerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java/com/food/ordering/system/payment/service/domain/ports/input/message/listener/PaymentRequestMessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java/com/food/ordering/system/payment/service/domain/ports/input/message/listener/PaymentRequestMessageListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java/com/food/ordering/system/payment/service/domain/ports/output/message/publisher/PaymentCancelledMessagePublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java/com/food/ordering/system/payment/service/domain/ports/output/message/publisher/PaymentCancelledMessagePublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java/com/food/ordering/system/payment/service/domain/ports/output/message/publisher/PaymentCompletedMessagePublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java/com/food/ordering/system/payment/service/domain/ports/output/message/publisher/PaymentCompletedMessagePublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java/com/food/ordering/system/payment/service/domain/ports/output/message/publisher/PaymentFailedMessagePublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java/com/food/ordering/system/payment/service/domain/ports/output/message/publisher/PaymentFailedMessagePublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/payment-domain/payment-domain-core/src/main/java/com/food/ordering/system/payment/service/domain/PaymentDomainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-domain-core/src/main/java/com/food/ordering/system/payment/service/domain/PaymentDomainServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-service/payment-domain/payment-domain-core/src/main/java/com/food/ordering/system/payment/service/domain/entity/CreditHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-domain-core/src/main/java/com/food/ordering/system/payment/service/domain/entity/CreditHistory.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,71 +118,83 @@
       <recent name="com.food.ordering.system.kafka.producer" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in order-messaging">
-    <configuration name="All in order-messaging" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="order-messaging" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrderApplicationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="order-application-service" />
+  <component name="RunManager" selected="JUnit.PaymentRequestHelperTest.testPersistPayment_whenPriceIsNull">
+    <configuration name="PaymentDomainServiceTest.testValidateAndInitiatePayment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="payment-application-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.food.ordering.system.order.service.domain.*" />
+          <option name="PATTERN" value="com.food.ordering.system.service.domain.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.food.ordering.system.order.service.domain" />
-      <option name="MAIN_CLASS_NAME" value="com.food.ordering.system.order.service.domain.OrderApplicationServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrderApplicationServiceTest.testCreateOrderWithWrongPrice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="order-application-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.food.ordering.system.order.service.domain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.food.ordering.system.order.service.domain" />
-      <option name="MAIN_CLASS_NAME" value="com.food.ordering.system.order.service.domain.OrderApplicationServiceTest" />
-      <option name="METHOD_NAME" value="testCreateOrderWithWrongPrice" />
+      <option name="PACKAGE_NAME" value="com.food.ordering.system.service.domain.service" />
+      <option name="MAIN_CLASS_NAME" value="com.food.ordering.system.service.domain.service.PaymentDomainServiceTest" />
+      <option name="METHOD_NAME" value="testValidateAndInitiatePayment" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderApplicationServiceTest.testCreateOrderWithWrongProductPrice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="order-application-service" />
+    <configuration name="PaymentDomainServiceTest.testValidateAndInitiatePayment_successCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="payment-application-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.food.ordering.system.order.service.domain.*" />
+          <option name="PATTERN" value="com.food.ordering.system.service.domain.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.food.ordering.system.order.service.domain" />
-      <option name="MAIN_CLASS_NAME" value="com.food.ordering.system.order.service.domain.OrderApplicationServiceTest" />
-      <option name="METHOD_NAME" value="testCreateOrderWithWrongProductPrice" />
+      <option name="PACKAGE_NAME" value="com.food.ordering.system.service.domain.service" />
+      <option name="MAIN_CLASS_NAME" value="com.food.ordering.system.service.domain.service.PaymentDomainServiceTest" />
+      <option name="METHOD_NAME" value="testValidateAndInitiatePayment_successCase" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="customer-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.food.ordering.system.customer.service.CustomerServiceApplication" />
+    <configuration name="PaymentDomainServiceTest.testValidateAndInitiatePayment_whenCreditHistoryInvalid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="payment-application-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.food.ordering.system.customer.service.*" />
+          <option name="PATTERN" value="com.food.ordering.system.service.domain.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.food.ordering.system.service.domain.service" />
+      <option name="MAIN_CLASS_NAME" value="com.food.ordering.system.service.domain.service.PaymentDomainServiceTest" />
+      <option name="METHOD_NAME" value="testValidateAndInitiatePayment_whenCreditHistoryInvalid" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PaymentDomainServiceTest.testValidateAndInitiatePayment_whenPriceExceedCreditEntry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="payment-application-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.food.ordering.system.service.domain.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.food.ordering.system.service.domain.service" />
+      <option name="MAIN_CLASS_NAME" value="com.food.ordering.system.service.domain.service.PaymentDomainServiceTest" />
+      <option name="METHOD_NAME" value="testValidateAndInitiatePayment_whenPriceExceedCreditEntry" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PaymentRequestHelperTest.testPersistPayment_whenPriceIsNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="payment-application-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.food.ordering.system.service.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.food.ordering.system.service.domain" />
+      <option name="MAIN_CLASS_NAME" value="com.food.ordering.system.service.domain.PaymentRequestHelperTest" />
+      <option name="METHOD_NAME" value="testPersistPayment_whenPriceIsNull" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,13 +206,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PaymentServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="payment-container" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.food.ordering.system.payment.service.domain.PaymentServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in order-messaging" />
-        <item itemvalue="Spring Boot.CustomerServiceApplication" />
-        <item itemvalue="JUnit.OrderApplicationServiceTest" />
-        <item itemvalue="JUnit.OrderApplicationServiceTest.testCreateOrderWithWrongProductPrice" />
-        <item itemvalue="JUnit.OrderApplicationServiceTest.testCreateOrderWithWrongPrice" />
+        <item itemvalue="JUnit.PaymentRequestHelperTest.testPersistPayment_whenPriceIsNull" />
+        <item itemvalue="JUnit.PaymentDomainServiceTest.testValidateAndInitiatePayment_successCase" />
+        <item itemvalue="JUnit.PaymentDomainServiceTest.testValidateAndInitiatePayment_whenPriceExceedCreditEntry" />
+        <item itemvalue="JUnit.PaymentDomainServiceTest.testValidateAndInitiatePayment_whenCreditHistoryInvalid" />
+        <item itemvalue="JUnit.PaymentDomainServiceTest.testValidateAndInitiatePayment" />
       </list>
     </recent_temporary>
   </component>
@@ -208,7 +251,7 @@
       <workItem from="1685185496511" duration="33961000" />
       <workItem from="1685331017272" duration="41973000" />
       <workItem from="1685525765629" duration="52138000" />
-      <workItem from="1685782699319" duration="9692000" />
+      <workItem from="1685782699319" duration="83064000" />
     </task>
     <servers />
   </component>
@@ -217,6 +260,17 @@
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/test/java/com/food/ordering/system/service/domain/PaymentRequestHelperTest.java</url>
+          <line>138</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

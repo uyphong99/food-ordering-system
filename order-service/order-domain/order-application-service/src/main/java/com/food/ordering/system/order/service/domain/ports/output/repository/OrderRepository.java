@@ -4,7 +4,9 @@ import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.valueobject.TrackingId;
 
 import java.util.Optional;
-
+/**
+ * Secondary port
+ * */
 public interface OrderRepository {
     Order save(Order order);
 
