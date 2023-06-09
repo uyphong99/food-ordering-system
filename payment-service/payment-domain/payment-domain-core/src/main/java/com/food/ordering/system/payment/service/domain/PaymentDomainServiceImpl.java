@@ -35,6 +35,10 @@ public class PaymentDomainServiceImpl implements PaymentDomainService{
                                                    List<String> failureMessages,
                                                    DomainEventPublisher<PaymentCompletedEvent> paymentCompletedEventDomainEventPublisher,
                                                    DomainEventPublisher<PaymentFailedEvent> paymentFailedEventPublisher) {
+        if (payment.getPrice() == null) {
+            return getPaymentFailedEvent(payment, failureMessages, paymentFailedEventPublisher);
+        }
+
         payment.validatePayment(failureMessages);
         payment.initializePayment();
         validateCreditEntry(payment, creditEntry, failureMessages);
@@ -42,19 +46,23 @@ public class PaymentDomainServiceImpl implements PaymentDomainService{
         updateCreditHistory(payment, creditHistories, TransactionType.DEBIT);
         validateCreditHistory(creditEntry, creditHistories, failureMessages);
 
-        if (failureMessages.isEmpty()) {
-            log.info("Payment is initiated for order id: {}", payment.getOrderId());
-            payment.updateStatus(PaymentStatus.COMPLETED);
-            return new PaymentCompletedEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), paymentCompletedEventDomainEventPublisher);
-        } else {
-            log.info("Payment initiation is failed for order id: {}", payment.getOrderId().getValue());
-            payment.updateStatus(PaymentStatus.FAILED);
-            return new PaymentFailedEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), failureMessages, paymentFailedEventPublisher);
+        if (!failureMessages.isEmpty()) {
+            return getPaymentFailedEvent(payment, failureMessages, paymentFailedEventPublisher);
         }
+
+        log.info("Payment is initiated for order id: {}", payment.getOrderId());
+        payment.updateStatus(PaymentStatus.COMPLETED);
+        return new PaymentCompletedEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), paymentCompletedEventDomainEventPublisher);
     }
+
+    private static PaymentFailedEvent getPaymentFailedEvent(Payment payment, List<String> failureMessages, DomainEventPublisher<PaymentFailedEvent> paymentFailedEventPublisher) {
+        log.info("Payment initiation is failed for order id: {}", payment.getOrderId().getValue());
+        payment.updateStatus(PaymentStatus.FAILED);
+        return new PaymentFailedEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), failureMessages, paymentFailedEventPublisher);
+    }
+
     /**
      * Response for cancel payment by refund to credit entry and update credit history.
-     *
      * */
     @Override
     public PaymentEvent validateAndCancelPayment(Payment payment,
@@ -89,12 +97,14 @@ public class PaymentDomainServiceImpl implements PaymentDomainService{
                     "doesn't have enough credit for payment!");
         }
     }
+
     /**
      * Pay money for the order
      * */
     private void subtractCreditEntry(Payment payment, CreditEntry creditEntry) {
         creditEntry.subtractCreditAmount(payment.getPrice());
     }
+
     /**
      * refund money to customer in case the cancelled order
      * */

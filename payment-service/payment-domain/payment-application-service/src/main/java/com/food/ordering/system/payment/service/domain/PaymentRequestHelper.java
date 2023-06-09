@@ -43,9 +43,10 @@ public class PaymentRequestHelper {
     @Transactional
     public PaymentEvent persistPayment(PaymentRequest paymentRequest) {
         log.info("Received payment complete event for order if: {}", paymentRequest.getOrderId());
+        boolean existPayment = false;
         Payment payment = paymentDataMapper.paymentRequestToPayment(paymentRequest);
 
-        return paymentToPaymentEvent(payment);
+        return paymentToPaymentEvent(payment, existPayment);
     }
 
     @Transactional
@@ -58,22 +59,24 @@ public class PaymentRequestHelper {
                     paymentRequest.getOrderId() + " could not be found!");
         }
 
+        boolean existPayment = true;
+
         Payment payment = paymentResponse.get();
 
-        return paymentToPaymentEvent(payment);
+        return paymentToPaymentEvent(payment, existPayment);
     }
 
     /**
      * map payment to payment event and persist entry, entry history and payment to DB
      * */
-    private PaymentEvent paymentToPaymentEvent(Payment payment) {
+    private PaymentEvent paymentToPaymentEvent(Payment payment, boolean existPayment) {
         CreditEntry creditEntry = getCreditEntry(payment.getCustomerId());
         List<CreditHistory> creditHistories = getCreditHistories(payment.getCustomerId());
         List<String> failureMessages = new ArrayList<>();
-        PaymentStatus paymentStatus = payment.getPaymentStatus();
+
         PaymentEvent paymentEvent;
 
-        if (paymentStatus.equals(PaymentStatus.CANCELLED)) {
+        if (existPayment) {
             paymentEvent = paymentDomainService.validateAndCancelPayment(payment, creditEntry, creditHistories,
                     failureMessages, paymentCancelledEventPublisher, paymentFailedEventPublisher);
         } else {
