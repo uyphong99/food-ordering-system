@@ -9,6 +9,7 @@ import com.food.ordering.system.payment.service.domain.entity.CreditHistory;
 import com.food.ordering.system.payment.service.domain.entity.Payment;
 import com.food.ordering.system.payment.service.domain.event.PaymentCancelledEvent;
 import com.food.ordering.system.payment.service.domain.event.PaymentEvent;
+import com.food.ordering.system.payment.service.domain.event.PaymentFailedEvent;
 import com.food.ordering.system.payment.service.domain.exception.PaymentApplicationServiceException;
 import com.food.ordering.system.payment.service.domain.mapper.PaymentDataMapper;
 import com.food.ordering.system.payment.service.domain.ports.output.message.publisher.PaymentCancelledMessagePublisher;
@@ -22,10 +23,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
+import static com.food.ordering.system.domain.DomainConstants.UTC;
 
 @Component
 @AllArgsConstructor
@@ -42,9 +47,12 @@ public class PaymentRequestHelper {
 
     @Transactional
     public PaymentEvent persistPayment(PaymentRequest paymentRequest) {
-        log.info("Received payment complete event for order if: {}", paymentRequest.getOrderId());
-        boolean existPayment = false;
+
         Payment payment = paymentDataMapper.paymentRequestToPayment(paymentRequest);
+
+        log.info("Received payment complete event for order id: {}", paymentRequest.getOrderId());
+        boolean existPayment = false;
+
 
         return paymentToPaymentEvent(payment, existPayment);
     }
