@@ -12,7 +12,7 @@ public class OrderApproval extends BaseEntity<OrderApprovalId> {
     private final OrderApprovalStatus orderApprovalStatus;
 
     private OrderApproval(Builder builder) {
-        id = builder.id;
+        setId(builder.orderApprovalId);
         restaurantId = builder.restaurantId;
         orderId = builder.orderId;
         orderApprovalStatus = builder.orderApprovalStatus;
@@ -36,19 +36,30 @@ public class OrderApproval extends BaseEntity<OrderApprovalId> {
 
 
     public static final class Builder {
-        private ID id;
+        private OrderApprovalId orderApprovalId;
         private RestaurantId restaurantId;
         private OrderId orderId;
         private OrderApprovalStatus orderApprovalStatus;
 
-        public Builder(RestaurantId restaurantId, OrderId orderId, OrderApprovalStatus orderApprovalStatus) {
-            this.restaurantId = restaurantId;
-            this.orderId = orderId;
-            this.orderApprovalStatus = orderApprovalStatus;
+        public Builder() {}
+
+        public Builder orderApprovalId(OrderApprovalId val) {
+            orderApprovalId = val;
+            return this;
         }
 
-        public Builder id(ID val) {
-            id = val;
+        public Builder restaurantId(RestaurantId val) {
+            restaurantId = val;
+            return this;
+        }
+
+        public Builder orderId(OrderId val) {
+            orderId = val;
+            return this;
+        }
+
+        public Builder orderApprovalStatus(OrderApprovalStatus val) {
+            orderApprovalStatus = val;
             return this;
         }
 
