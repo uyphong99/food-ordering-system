@@ -16,7 +16,7 @@ import com.food.ordering.system.payment.service.domain.ports.output.repository.C
 import com.food.ordering.system.payment.service.domain.valueobject.CreditEntryId;
 import com.food.ordering.system.payment.service.domain.valueobject.CreditHistoryId;
 import com.food.ordering.system.payment.service.domain.valueobject.TransactionType;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ import static org.mockito.Mockito.when;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest(classes = PaymentTestConfiguration.class)
-public class PaymentRequestHelperTest {
+public class PaymentRequestHelperIntegrationTest {
     private PaymentRequestHelper paymentRequestHelper;
     private PaymentDomainService paymentDomainService;
     private PaymentDataMapper paymentDataMapper;
@@ -54,11 +54,11 @@ public class PaymentRequestHelperTest {
     private final UUID CREDITHISTORY_ID = UUID.fromString("781a3e15-8a9e-4e37-b8f8-80537b6dc8b8");
     private final BigDecimal PRICE = new BigDecimal("100.00");
 
-    public PaymentRequestHelperTest(@Autowired PaymentRequestHelper paymentRequestHelper,
-                                    @Autowired PaymentDomainService paymentDomainService,
-                                    @Autowired PaymentDataMapper paymentDataMapper,
-                                    @Autowired CreditHistoryRepository creditHistoryRepository,
-                                    @Autowired CreditEntryRepository creditEntryRepository) {
+    public PaymentRequestHelperIntegrationTest(@Autowired PaymentRequestHelper paymentRequestHelper,
+                                               @Autowired PaymentDomainService paymentDomainService,
+                                               @Autowired PaymentDataMapper paymentDataMapper,
+                                               @Autowired CreditHistoryRepository creditHistoryRepository,
+                                               @Autowired CreditEntryRepository creditEntryRepository) {
         this.paymentRequestHelper = paymentRequestHelper;
         this.paymentDomainService = paymentDomainService;
         this.paymentDataMapper = paymentDataMapper;
@@ -66,7 +66,7 @@ public class PaymentRequestHelperTest {
         this.creditEntryRepository = creditEntryRepository;
     }
 
-    @BeforeAll
+    @BeforeEach
     void init() {
         CustomerId customerId = new CustomerId(CUSTOMER_ID);
         OrderId orderId = new OrderId(ORDER_ID);
@@ -81,7 +81,7 @@ public class PaymentRequestHelperTest {
         paymentRequestInvalidPrice = PaymentRequest.builder()
                 .customerId(CUSTOMER_ID.toString())
                 .orderId(ORDER_ID.toString())
-                .price(null)
+                .price((new BigDecimal("50.00")))
                 .paymentOrderStatus(PaymentOrderStatus.PENDING)
                 .build();
 
@@ -133,7 +133,6 @@ public class PaymentRequestHelperTest {
         Optional<List<CreditHistory>> creditHistories = Optional.of(creditHistoriesList);
 
         when(creditHistoryRepository.findByCustomerId(new CustomerId(CUSTOMER_ID))).thenReturn(creditHistories);
-        when(creditEntryRepository.findByCustomerId(new CustomerId(CUSTOMER_ID))).thenReturn(Optional.ofNullable(creditEntry));
 
         PaymentEvent paymentEvent = paymentRequestHelper.persistPayment(paymentRequestInvalidPrice);
         assertNotNull(paymentEvent);

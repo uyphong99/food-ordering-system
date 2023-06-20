@@ -1,4 +1,4 @@
-package com.food.ordering.system.service.domain.service;
+package com.food.ordering.system.service.domain.unit;
 
 import com.food.ordering.system.domain.event.publisher.DomainEventPublisher;
 import com.food.ordering.system.domain.valueobject.CustomerId;
@@ -32,16 +32,12 @@ import java.util.UUID;
 import static com.food.ordering.system.domain.DomainConstants.UTC;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
 
 public class PaymentDomainServiceTest {
     @Mock
     private DomainEventPublisher<PaymentCompletedEvent> paymentCompletedEventDomainEventPublisher;
-
     @Mock
     private DomainEventPublisher<PaymentFailedEvent> paymentFailedEventPublisher;
-
     private PaymentDomainService paymentDomainService;
     private Payment paymentWithNullPrice;
     private Payment paymentExpectedSuccess;
