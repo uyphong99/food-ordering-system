@@ -34,7 +34,9 @@ public class OrderDomainServiceImpl implements OrderDomainService{
     }
 
 
-
+    /**
+     * Change order status to paid
+     * */
     @Override
     public OrderPaidEvent payOrder(Order order, DomainEventPublisher<OrderPaidEvent> orderPaidEventPublisher) {
         order.pay();

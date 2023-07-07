@@ -33,7 +33,7 @@ public class OrderCreateHelper {
 
     /**
      * Save order to database after check the customer and restaurant.
-     * Map order command to order and save order to DB.
+     * Map order command DTO to order domain and save order to DB.
      * And return a OrderCreateEvent
      *
      * @param createOrderCommand the {@link CreateOrderCommand} containing the order details
