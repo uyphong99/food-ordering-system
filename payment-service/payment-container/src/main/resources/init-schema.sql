@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS payment CASCADE;
+DROP SCHEMA IF EXISTS payment CASCADE;
 
 CREATE SCHEMA payment;
 
@@ -31,7 +31,7 @@ CREATE TABLE "payment".credit_entry
     CONSTRAINT credit_entry_pkey PRIMARY KEY (id)
 );
 
-DROP TYPE IF EXIST transaction_type;
+DROP TYPE IF EXISTS transaction_type;
 
 CREATE TYPE transaction_type AS ENUM ('DEBIT', 'CREDIT');
 

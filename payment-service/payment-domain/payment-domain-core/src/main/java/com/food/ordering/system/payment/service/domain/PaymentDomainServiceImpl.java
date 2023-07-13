@@ -24,6 +24,9 @@ import static com.food.ordering.system.domain.DomainConstants.UTC;
 @Slf4j
 public class PaymentDomainServiceImpl implements PaymentDomainService{
 
+    public PaymentDomainServiceImpl() {
+
+    }
 
     /**
      * validate and init payment, then perform payment and update history.

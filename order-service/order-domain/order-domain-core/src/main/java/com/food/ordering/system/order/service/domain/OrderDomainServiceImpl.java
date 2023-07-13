@@ -19,6 +19,9 @@ import static com.food.ordering.system.domain.DomainConstants.UTC;
 @Slf4j
 public class OrderDomainServiceImpl implements OrderDomainService{
 
+    public OrderDomainServiceImpl() {
+    }
+
 
     /**
      * valid the restaurant, update order products, and create CreatedEvent

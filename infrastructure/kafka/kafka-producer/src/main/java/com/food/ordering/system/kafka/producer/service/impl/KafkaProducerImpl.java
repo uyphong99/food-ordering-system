@@ -30,6 +30,7 @@ public class KafkaProducerImpl<K extends Serializable, V extends SpecificRecordB
         try {
             ListenableFuture<SendResult<K, V>> kafkaResultFuture = (ListenableFuture<SendResult<K, V>>) kafkaTemplate.send(topicName, key, message);
             kafkaResultFuture.addCallback(callback);
+
         } catch (KafkaException e) {
             log.error("Error on kafka producer with key: {}, message: {} and exception: {}", key, message, e.getMessage());
             throw new KafkaProducerException("Error on kafka producer with key: " + key + " and message: " + message);
