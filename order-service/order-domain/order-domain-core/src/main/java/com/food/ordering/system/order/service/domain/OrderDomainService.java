@@ -27,6 +27,10 @@ public interface OrderDomainService {
      * */
     OrderCreatedEvent  validateAndInitiateOrder(Order order, Restaurant restaurant, DomainEventPublisher<OrderCreatedEvent> orderCreatedEventPublisher);
 
+    /**
+     * Change order status to paid and return OrderPaidEvent
+     *
+     * */
     OrderPaidEvent payOrder(Order order, DomainEventPublisher<OrderPaidEvent> orderPaidEventPublisher);
 
     void approveOrder(Order order);

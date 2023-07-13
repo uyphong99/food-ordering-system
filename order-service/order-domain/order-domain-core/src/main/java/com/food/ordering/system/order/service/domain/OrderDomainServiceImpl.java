@@ -19,6 +19,9 @@ import static com.food.ordering.system.domain.DomainConstants.UTC;
 @Slf4j
 public class OrderDomainServiceImpl implements OrderDomainService{
 
+    public OrderDomainServiceImpl() {
+    }
+
 
     /**
      * valid the restaurant, update order products, and create CreatedEvent
@@ -34,7 +37,9 @@ public class OrderDomainServiceImpl implements OrderDomainService{
     }
 
 
-
+    /**
+     * Change order status to paid
+     * */
     @Override
     public OrderPaidEvent payOrder(Order order, DomainEventPublisher<OrderPaidEvent> orderPaidEventPublisher) {
         order.pay();

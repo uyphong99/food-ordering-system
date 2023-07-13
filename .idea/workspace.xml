@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8d5a9a92-0a30-47ff-a217-2ffeb7a77994" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-service/payment-dataaccess/src/main/java/com/food/ordering/system/payment/service/dataaccess/credithistory/mapper/CreditHistoryDataAccessMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-dataaccess/src/main/java/com/food/ordering/system/payment/service/dataaccess/credithistory/mapper/CreditHistoryDataAccessMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/test/java/com/food/ordering/system/service/domain/PaymentRequestHelperIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/test/java/com/food/ordering/system/service/domain/PaymentRequestHelperIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +36,9 @@
         <option name="workspaceImportEnabled" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2OrmJaiwvrebxHyqmWdtEq0j2Rq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -103,7 +104,7 @@
       <recent name="com.food.ordering.system.kafka.producer" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PaymentRequestHelperIntegrationTest.testPersistPayment_whenPriceIsNull">
+  <component name="RunManager" selected="Spring Boot.RestaurantServiceApplication">
     <configuration name="PaymentDomainServiceTest.testValidateAndInitiatePayment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="payment-application-service" />
       <extension name="coverage">
@@ -191,7 +192,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="OrderServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="order-container" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.food.ordering.system.order.service.domain.OrderServiceApplication" />
       <method v="2">
@@ -214,11 +215,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.OrderServiceApplication" />
         <item itemvalue="JUnit.PaymentRequestHelperIntegrationTest.testPersistPayment_whenPriceIsNull" />
         <item itemvalue="JUnit.PaymentDomainServiceTest.testValidateAndInitiatePayment_successCase" />
         <item itemvalue="JUnit.PaymentDomainServiceTest.testValidateAndInitiatePayment_whenPriceExceedCreditEntry" />
         <item itemvalue="JUnit.PaymentDomainServiceTest.testValidateAndInitiatePayment_whenCreditHistoryInvalid" />
-        <item itemvalue="JUnit.PaymentDomainServiceTest.testValidateAndInitiatePayment" />
       </list>
     </recent_temporary>
   </component>
@@ -261,6 +262,8 @@
       <workItem from="1688225153839" duration="3008000" />
       <workItem from="1688362504137" duration="22249000" />
       <workItem from="1688459464638" duration="12260000" />
+      <workItem from="1688544870136" duration="36026000" />
+      <workItem from="1688973719458" duration="30922000" />
     </task>
     <servers />
   </component>
