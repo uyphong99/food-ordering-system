@@ -27,5 +27,5 @@ public class RestaurantEntity {
     private Boolean restaurantActive;
     private String productName;
     private BigDecimal productPrice;
-
+    private Boolean productAvailable;
 }

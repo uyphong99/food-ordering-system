@@ -20,11 +20,10 @@ public class OrderRejectedKafkaMessagePublisher implements OrderRejectedMessageP
     private RestaurantMessagingDataMapper restaurantMessagingDataMapper;
     private RestaurantServiceConfigData restaurantServiceConfigData;
     private KafkaProducer<String, RestaurantApprovalResponseAvroModel> kafkaProducer;
-    private KafkaMessageHelper kafkaMessageHelper;
 
     @Override
     public void publish(OrderRejectedEvent domainEvent) {
-        String orderId = domainEvent.getOrderApproval().getOrderId().toString();
+        String orderId = domainEvent.getOrderApproval().getOrderId().getValue().toString();
         String topicName = restaurantServiceConfigData.getRestaurantApprovalResponseTopicName();
 
         log.info("Received OrderRejectedEvent for order id: {}", orderId);
@@ -32,9 +31,8 @@ public class OrderRejectedKafkaMessagePublisher implements OrderRejectedMessageP
         try {
             RestaurantApprovalResponseAvroModel message = restaurantMessagingDataMapper
                     .orderApprovalEventToRestaurantApprovalResponseAvroModel(domainEvent);
-            ListenableFutureCallback<SendResult<String, RestaurantApprovalResponseAvroModel>> callback =
-                    kafkaMessageHelper.getKafkaCallBack(topicName, message, orderId, "RestaurantApprovalResponseAvroModel");
-            kafkaProducer.send(topicName, orderId, message, callback);
+
+            kafkaProducer.send(topicName, orderId, message);
 
             log.info("RestaurantApprovalResponseAvroModel sent to kafka at: {}", System.nanoTime());
         } catch (Exception e) {

@@ -6,6 +6,7 @@ import com.food.ordering.system.kafka.order.avro.model.PaymentStatus;
 import com.food.ordering.system.payment.service.domain.dto.PaymentRequest;
 import com.food.ordering.system.payment.service.domain.event.PaymentCancelledEvent;
 import com.food.ordering.system.payment.service.domain.event.PaymentCompletedEvent;
+import com.food.ordering.system.payment.service.domain.event.PaymentEvent;
 import com.food.ordering.system.payment.service.domain.event.PaymentFailedEvent;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,7 @@ import java.util.UUID;
 
 @Component
 public class PaymentMessagingDataMapper {
-    public PaymentResponseAvroModel paymentCompletedToPaymentResponseAvroModel(PaymentCompletedEvent paymentCompletedEvent) {
+    public PaymentResponseAvroModel paymentEventToPaymentResponseAvroModel(PaymentEvent paymentCompletedEvent) {
         return PaymentResponseAvroModel.newBuilder()
                 .setId(UUID.randomUUID().toString())
                 .setSagaId("")
@@ -22,6 +23,8 @@ public class PaymentMessagingDataMapper {
                 .setPrice(paymentCompletedEvent.getPayment().getPrice().getAmount())
                 .setPaymentStatus(PaymentStatus.valueOf(paymentCompletedEvent.getPayment().getPaymentStatus().toString()))
                 .setCreatedAt(paymentCompletedEvent.getCreatedAt().toInstant())
+                .setOrderId(paymentCompletedEvent.getPayment().getOrderId().getValue().toString())
+                .setFailureMessages(paymentCompletedEvent.getFailureMessages())
                 .build();
     }
 

@@ -18,28 +18,23 @@ public class PaymentCancelledKafkaMessagePublisher implements PaymentCancelledMe
     private final PaymentMessagingDataMapper paymentMessagingDataMapper;
     private final KafkaProducer<String, PaymentResponseAvroModel> kafkaProducer;
     private final PaymentServiceConfigData paymentServiceConfigData;
-    private final KafkaMessageHelper kafkaMessageHelper;
+    //private final KafkaMessageHelper kafkaMessageHelper;
     @Override
     public void publish(PaymentCancelledEvent domainEvent) {
-        String orderId = domainEvent.getPayment().getOrderId().toString();
+        String orderId = domainEvent.getPayment().getOrderId().getValue().toString();
 
         try {
             PaymentResponseAvroModel paymentResponseAvroModel =
-                    paymentMessagingDataMapper.paymentCancelledEventToPaymentResponseAvroModel(domainEvent);
+                    paymentMessagingDataMapper.paymentEventToPaymentResponseAvroModel(domainEvent);
 
             log.info("Received PaymentCancelledEvent for order id: {}", orderId);
 
-            kafkaProducer.send(paymentServiceConfigData.getPaymentResponseTopicName(),
-                    orderId,
-                    paymentResponseAvroModel,
-                    kafkaMessageHelper.getKafkaCallBack(paymentServiceConfigData.getPaymentResponseTopicName(),
-                            paymentResponseAvroModel,
-                            orderId,
-                            "PaymentResponseAvroModel"));
+            kafkaProducer.send(paymentServiceConfigData.getPaymentResponseTopicName(), orderId, paymentResponseAvroModel);
 
             log.info("PaymentResponseAvroModel sent to kafka for order id: {}", orderId);
         } catch (Exception e) {
-            log.error("Error while sending PaymentResponseAvroModel message" + " to kafka with order id: {}, error: {}", orderId, e.getMessage());
+            log.error("Error while sending PaymentResponseAvroModel message" + " to kafka with order id: {}, error: {}",
+                    orderId, e.getMessage());
         }
     }
 }

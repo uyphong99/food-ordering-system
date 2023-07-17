@@ -20,7 +20,7 @@ public class CreateOrderKafkaMessagePublisher implements OrderCreatedPaymentRequ
     private final OrderMessagingDataMapper orderMessagingDataMapper;
     private final OrderServiceConfigData orderServiceConfigData;
     private KafkaProducer<String, PaymentRequestAvroModel> kafkaProducer;
-    private KafkaMessageHelper orderKafkaMessageHelper;
+    //private KafkaMessageHelper orderKafkaMessageHelper;
     @Override
     public void publish(OrderCreatedEvent domainEvent) {
         String orderId = domainEvent.getOrder().getId().getValue().toString();
@@ -29,13 +29,7 @@ public class CreateOrderKafkaMessagePublisher implements OrderCreatedPaymentRequ
         try {
             PaymentRequestAvroModel paymentRequestAvroModel = orderMessagingDataMapper.orderCreatedEventToPaymentRequestAvroModel(domainEvent);
 
-            kafkaProducer.send(orderServiceConfigData.getPaymentRequestTopicName(),
-                    orderId,
-                    paymentRequestAvroModel,
-                    orderKafkaMessageHelper.getKafkaCallBack(orderServiceConfigData.getPaymentResponseTopicName(),
-                            paymentRequestAvroModel,
-                            orderId,
-                            "PaymentRequestAvroModel"));
+            kafkaProducer.send(orderServiceConfigData.getPaymentRequestTopicName(), orderId, paymentRequestAvroModel);
 
             log.info("PaymentRequestAvroModel sent to Kafka for order id: {}", paymentRequestAvroModel.getOrderId());
         } catch (Exception e) {

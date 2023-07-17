@@ -11,5 +11,5 @@ public interface KafkaProducer<K extends Serializable, V extends SpecificRecordB
      * @param key: orderId of the order.
      * @param message: use avro model as the message.
      * */
-    void send(String topicName, K key, V message, ListenableFutureCallback<SendResult<K, V>> callback);
+    void send(String topicName, K key, V message);
 }

@@ -16,7 +16,7 @@ import java.util.UUID;
 public class OrderSagaHelper {
     private final OrderRepository orderRepository;
 
-    Order findOrder(String orderId) {
+    public Order findOrder(String orderId) {
         Optional<Order> order = orderRepository.findById(UUID.fromString(orderId));
 
         if (order.isEmpty()) {

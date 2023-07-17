@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class RestaurantDataMapper {
     public Restaurant restaurantApprovalRequestToRestaurant(RestaurantApprovalRequest restaurantApprovalRequest) {
         return Restaurant.builder()
-                .restaurantId(new RestaurantId(UUID.randomUUID()))
+                .restaurantId(new RestaurantId(UUID.fromString(restaurantApprovalRequest.getRestaurantId())))
                 .orderDetail(OrderDetail.builder()
                         .orderId(new OrderId(UUID.fromString(restaurantApprovalRequest.getOrderId())))
                         .products(restaurantApprovalRequest.getProducts().stream().map(
