@@ -39,10 +39,11 @@ public class RestaurantMessagingDataMapper {
 
     public RestaurantApprovalResponseAvroModel orderApprovalEventToRestaurantApprovalResponseAvroModel(OrderApprovalEvent domainEvent) {
         return RestaurantApprovalResponseAvroModel.newBuilder()
-                .setOrderId(domainEvent.getOrderApproval().getOrderId().toString())
-                .setRestaurantId(domainEvent.getRestaurantId().toString())
+                .setOrderId(domainEvent.getOrderApproval().getOrderId().getValue().toString())
+                .setRestaurantId(domainEvent.getRestaurantId().getValue().toString())
                 .setOrderApprovalStatus(OrderApprovalStatus.valueOf(domainEvent.getOrderApproval().getOrderApprovalStatus().toString()))
-                .setId(UUID.randomUUID().toString())
+                .setId(domainEvent.getOrderApproval().getId().getValue().toString())
+                //.setId(UUID.randomUUID().toString())
                 .setSagaId("")
                 .setCreatedAt(domainEvent.getCreatedAt().toInstant())
                 .setFailureMessages(domainEvent.getFailureMessage())

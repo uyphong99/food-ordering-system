@@ -19,12 +19,11 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 public class OrderApprovedKafkaMessagePublisher implements OrderApprovedMessagePublisher {
     private RestaurantMessagingDataMapper restaurantMessagingDataMapper;
     private KafkaProducer<String, RestaurantApprovalResponseAvroModel> kafkaProducer;
-    private KafkaMessageHelper kafkaMessageHelper;
     private RestaurantServiceConfigData restaurantServiceConfigData;
 
     @Override
     public void publish(OrderApprovedEvent domainEvent) {
-        String orderId = domainEvent.getOrderApproval().getOrderId().toString();
+        String orderId = domainEvent.getOrderApproval().getOrderId().getValue().toString();
         String topicName = restaurantServiceConfigData.getRestaurantApprovalResponseTopicName();
 
         log.info("Receive OrderApprovedEvent for order id: {}", orderId);
@@ -33,10 +32,8 @@ public class OrderApprovedKafkaMessagePublisher implements OrderApprovedMessageP
             RestaurantApprovalResponseAvroModel message = restaurantMessagingDataMapper
                     .orderApprovalEventToRestaurantApprovalResponseAvroModel(domainEvent);
 
-            ListenableFutureCallback<SendResult<String, RestaurantApprovalResponseAvroModel>> callback = kafkaMessageHelper
-                    .getKafkaCallBack(topicName, message, orderId, "RestaurantApprovalResponseAvroModel");
 
-            kafkaProducer.send(topicName, orderId, message, callback);
+            kafkaProducer.send(topicName, orderId, message);
 
             log.info("RestaurantApprovalResponseAvroModel sent to kafka at {}", System.nanoTime());
         } catch (Exception e) {

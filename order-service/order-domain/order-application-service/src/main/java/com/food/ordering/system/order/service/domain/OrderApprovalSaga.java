@@ -29,6 +29,7 @@ public class OrderApprovalSaga implements SagaStep<RestaurantApprovalResponse, E
         Order order = orderSagaHelper.findOrder(orderId);
         log.info("Order with id: {} is approved", orderId);
         orderDomainService.approveOrder(order);
+        orderSagaHelper.saveOrder(order);
 
         return EmptyEvent.INSTANCE;
     }

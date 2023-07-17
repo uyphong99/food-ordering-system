@@ -14,6 +14,7 @@ import com.food.ordering.system.restaurant.service.domain.ports.output.repositor
 import com.food.ordering.system.restaurant.service.domain.ports.output.repository.RestaurantRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +44,12 @@ public class RestaurantApprovalRequestHelper {
         this.orderApprovedMessagePublisher = orderApprovedMessagePublisher;
         this.orderRejectedMessagePublisher = orderRejectedMessagePublisher;
     }
-
+    @Transactional
     public OrderApprovalEvent persistOrderApproval(RestaurantApprovalRequest restaurantApprovalRequest) {
-        log.info("Processing restaurant approval for order id: {}", restaurantApprovalRequest.getOrderId());
+        log.info("Processing restaurant approval for order id: {}; restaurant id: {}; number of product: {}",
+                restaurantApprovalRequest.getOrderId(),
+                restaurantApprovalRequest.getRestaurantId(),
+                restaurantApprovalRequest.getProducts().size());
         List<String> failureMessages = new ArrayList<>();
         Restaurant restaurant = findRestaurant(restaurantApprovalRequest);
         OrderApprovalEvent orderApprovalEvent = restaurantDomainService.validateOrder(restaurant, failureMessages,

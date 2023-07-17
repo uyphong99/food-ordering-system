@@ -20,7 +20,7 @@ public class CancelOrderKafkaMessagePublisher implements OrderCancelledPaymentRe
     private final OrderMessagingDataMapper orderMessagingDataMapper;
     private final OrderServiceConfigData orderServiceConfigData;
     private final KafkaProducer<String, PaymentRequestAvroModel> kafkaProducer;
-    private KafkaMessageHelper kafkaMessageHelper;
+    //private KafkaMessageHelper kafkaMessageHelper;
 
 
     @Override
@@ -31,13 +31,7 @@ public class CancelOrderKafkaMessagePublisher implements OrderCancelledPaymentRe
         try {
             PaymentRequestAvroModel paymentRequestAvroModel = orderMessagingDataMapper.orderCancelledEventToPaymentRequestAvroModel(domainEvent);
 
-            kafkaProducer.send(orderServiceConfigData.getPaymentRequestTopicName(),
-                    orderId,
-                    paymentRequestAvroModel,
-                    kafkaMessageHelper.getKafkaCallBack(orderServiceConfigData.getPaymentResponseTopicName(),
-                            paymentRequestAvroModel,
-                            orderId,
-                            "PaymentRequestAvroModel"));
+            kafkaProducer.send(orderServiceConfigData.getPaymentRequestTopicName(), orderId, paymentRequestAvroModel);
 
             log.info("PaymentRequestAvroModel sent to Kafka for order id: {}", paymentRequestAvroModel.getOrderId());
         } catch (Exception e) {
