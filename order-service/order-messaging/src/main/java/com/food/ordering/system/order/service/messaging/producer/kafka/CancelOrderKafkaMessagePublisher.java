@@ -20,8 +20,6 @@ public class CancelOrderKafkaMessagePublisher implements OrderCancelledPaymentRe
     private final OrderMessagingDataMapper orderMessagingDataMapper;
     private final OrderServiceConfigData orderServiceConfigData;
     private final KafkaProducer<String, PaymentRequestAvroModel> kafkaProducer;
-    //private KafkaMessageHelper kafkaMessageHelper;
-
 
     @Override
     public void publish(OrderCancelledEvent domainEvent) {

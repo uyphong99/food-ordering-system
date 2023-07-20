@@ -34,6 +34,7 @@ public class RestaurantMessagingDataMapper {
         return Product.builder()
                 .productId(new ProductId(UUID.fromString(productAvro.getId())))
                 .quantity(productAvro.getQuantity())
+                //.available(productAvro)
                 .build();
     }
 

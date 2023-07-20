@@ -28,6 +28,6 @@ public class OrderEntity {
     private String failureMessages;
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private OrderAddressEntity address;
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderItemEntity> items;
 }
