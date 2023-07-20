@@ -1,6 +1,7 @@
 package com.food.ordering.system.order.service.messaging.producer.kafka;
 
 import com.food.ordering.system.kafka.order.avro.model.PaymentRequestAvroModel;
+import com.food.ordering.system.kafka.producer.KafkaMessageHelper;
 import com.food.ordering.system.kafka.producer.service.KafkaProducer;
 import com.food.ordering.system.order.service.domain.config.OrderServiceConfigData;
 import com.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
@@ -10,7 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 /**
- * Publish cancel order event in avro form to payment request topic
+ * [Adapter] Publish cancel order event in avro form to payment request topic
  * */
 @Slf4j
 @Component
@@ -19,8 +20,6 @@ public class CancelOrderKafkaMessagePublisher implements OrderCancelledPaymentRe
     private final OrderMessagingDataMapper orderMessagingDataMapper;
     private final OrderServiceConfigData orderServiceConfigData;
     private final KafkaProducer<String, PaymentRequestAvroModel> kafkaProducer;
-    private OrderKafkaMessageHelper orderKafkaMessageHelper;
-
 
     @Override
     public void publish(OrderCancelledEvent domainEvent) {
@@ -30,13 +29,7 @@ public class CancelOrderKafkaMessagePublisher implements OrderCancelledPaymentRe
         try {
             PaymentRequestAvroModel paymentRequestAvroModel = orderMessagingDataMapper.orderCancelledEventToPaymentRequestAvroModel(domainEvent);
 
-            kafkaProducer.send(orderServiceConfigData.getPaymentRequestTopicName(),
-                    orderId,
-                    paymentRequestAvroModel,
-                    orderKafkaMessageHelper.getKafkaCallBack(orderServiceConfigData.getPaymentResponseTopicName(),
-                            paymentRequestAvroModel,
-                            orderId,
-                            "PaymentRequestAvroModel"));
+            kafkaProducer.send(orderServiceConfigData.getPaymentRequestTopicName(), orderId, paymentRequestAvroModel);
 
             log.info("PaymentRequestAvroModel sent to Kafka for order id: {}", paymentRequestAvroModel.getOrderId());
         } catch (Exception e) {

@@ -7,7 +7,7 @@ import com.food.ordering.system.order.service.domain.dto.track.TrackOrderRespons
 import jakarta.validation.Valid;
 
 /**
- * An interface (port) has two method: createOrder and trackOrder.
+ * An interface (primary port) has two method: createOrder and trackOrder.
  * Will be used by OrderController in order-application module.
  *
  * Allows the isolated domain to communicate with outside. Orchestrate transactions,

@@ -1,5 +1,6 @@
 package com.food.ordering.system.order.service.domain;
 
+import com.food.ordering.system.domain.event.publisher.DomainEventPublisher;
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.entity.Restaurant;
 import com.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
@@ -24,13 +25,17 @@ public interface OrderDomainService {
      *
      * Return an OrderCreatedEvent
      * */
-    OrderCreatedEvent  validateAndInitiateOrder(Order order, Restaurant restaurant);
+    OrderCreatedEvent  validateAndInitiateOrder(Order order, Restaurant restaurant, DomainEventPublisher<OrderCreatedEvent> orderCreatedEventPublisher);
 
-    OrderPaidEvent payOrder(Order order);
+    /**
+     * Change order status to paid and return OrderPaidEvent
+     *
+     * */
+    OrderPaidEvent payOrder(Order order, DomainEventPublisher<OrderPaidEvent> orderPaidEventPublisher);
 
     void approveOrder(Order order);
 
-    OrderCancelledEvent cancelOrderPayment(Order order, List<String> failureMessage);
+    OrderCancelledEvent cancelOrderPayment(Order order, List<String> failureMessage, DomainEventPublisher<OrderCancelledEvent> orderCreatedEventPublisher);
 
     void cancelOrder(Order order, List<String> failureMessage);
 }

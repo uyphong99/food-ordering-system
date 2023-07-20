@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/common/common-application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common/common-dataaccess/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/common-domain/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/src/main/resources" charset="UTF-8" />
@@ -14,6 +15,7 @@
     <file url="file://$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/infrastructure/kafka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/infrastructure/kafka/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/infrastructure/saga/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/infrastructure/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/order-service/order-application/src/main/java" charset="UTF-8" />
@@ -29,9 +31,9 @@
     <file url="file://$PROJECT_DIR$/payment-service/payment-container/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/payment-service/payment-container/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/payment-service/payment-dataaccess/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/payment-service/payment-domain/payment-application-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/payment-service/payment-domain/payment-domain-application/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/payment-service/payment-domain/payment-domain-core/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/payment-service/payment-domain/payment-domain-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/payment-service/payment-domain/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/payment-service/payment-domain/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/payment-service/payment-messaging/src/main/java" charset="UTF-8" />
@@ -39,6 +41,15 @@
     <file url="file://$PROJECT_DIR$/payment-service/payment-order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/payment-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/payment-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurant-service/restaurant-container/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurant-service/restaurant-dataaccess/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurant-service/restaurant-domain/restaurant-application-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurant-service/restaurant-domain/restaurant-domain-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurant-service/restaurant-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurant-service/restaurant-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurant-service/restaurant-messaging/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurant-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restaurant-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

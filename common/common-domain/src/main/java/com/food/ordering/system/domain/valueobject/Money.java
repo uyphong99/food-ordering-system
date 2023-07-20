@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 @Getter
-@EqualsAndHashCode
 public class Money {
     private final BigDecimal amount;
 
@@ -39,5 +38,18 @@ public class Money {
 
     public BigDecimal setScale(BigDecimal input) {
         return input.setScale(2, RoundingMode.HALF_EVEN);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Money money)) return false;
+
+        return getAmount().equals(money.getAmount());
+    }
+
+    @Override
+    public int hashCode() {
+        return getAmount().hashCode();
     }
 }

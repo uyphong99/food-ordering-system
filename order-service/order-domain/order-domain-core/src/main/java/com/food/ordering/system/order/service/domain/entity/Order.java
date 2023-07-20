@@ -68,14 +68,14 @@ public class Order extends AggregateRoot<OrderId> {
             throw new OrderDomainException("Order is not in correct state for approve operation!");
         }
 
-        orderStatus = OrderStatus.APPROVE;
+        orderStatus = OrderStatus.APPROVED;
     }
     /**
      * Check the order status, if order wasn't paid, change status to cancelling.
      * */
     public void initCancel(List<String> failureMessages) {
-        if (orderStatus != OrderStatus.PAID) {
-            throw new OrderDomainException("Order is not in correct state for canceling order.");
+        if (!(orderStatus == OrderStatus.PAID || orderStatus == OrderStatus.PENDING)) {
+            throw new OrderDomainException("Order is not in correct state for cancelling order.");
         }
 
         orderStatus = OrderStatus.CANCELLING;

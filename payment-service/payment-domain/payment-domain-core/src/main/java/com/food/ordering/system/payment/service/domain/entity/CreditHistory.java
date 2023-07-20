@@ -6,7 +6,6 @@ import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.payment.service.domain.valueobject.CreditHistoryId;
 import com.food.ordering.system.payment.service.domain.valueobject.TransactionType;
 
-import java.util.UUID;
 
 public class CreditHistory extends BaseEntity<CreditHistoryId> {
     private final CustomerId customerId;
@@ -20,7 +19,19 @@ public class CreditHistory extends BaseEntity<CreditHistoryId> {
         transactionType = builder.transactionType;
     }
 
-    public static Builder builder() {
+    public CustomerId getCustomerId() {
+        return customerId;
+    }
+
+    public Money getAmount() {
+        return amount;
+    }
+
+    public TransactionType getTransactionType() {
+        return transactionType;
+    }
+
+    public static final Builder builder() {
         return new Builder();
     }
 
@@ -30,7 +41,7 @@ public class CreditHistory extends BaseEntity<CreditHistoryId> {
         private Money amount;
         private TransactionType transactionType;
 
-        public Builder creditHistory(CreditHistoryId val) {
+        public Builder creditHistoryId(CreditHistoryId val) {
             this.creditHistoryId = val;
             return this;
         }
@@ -46,7 +57,7 @@ public class CreditHistory extends BaseEntity<CreditHistoryId> {
         }
 
         public Builder transactionType(TransactionType val) {
-            this.transactionType = transactionType;
+            this.transactionType = val;
             return this;
         }
 
