@@ -25,17 +25,17 @@ public interface OrderDomainService {
      *
      * Return an OrderCreatedEvent
      * */
-    OrderCreatedEvent  validateAndInitiateOrder(Order order, Restaurant restaurant, DomainEventPublisher<OrderCreatedEvent> orderCreatedEventPublisher);
+    OrderCreatedEvent  validateAndInitiateOrder(Order order, Restaurant restaurant);
 
     /**
      * Change order status to paid and return OrderPaidEvent
      *
      * */
-    OrderPaidEvent payOrder(Order order, DomainEventPublisher<OrderPaidEvent> orderPaidEventPublisher);
+    OrderPaidEvent payOrder(Order order);
 
     void approveOrder(Order order);
 
-    OrderCancelledEvent cancelOrderPayment(Order order, List<String> failureMessage, DomainEventPublisher<OrderCancelledEvent> orderCreatedEventPublisher);
+    OrderCancelledEvent cancelOrderPayment(Order order, List<String> failureMessage);
 
     void cancelOrder(Order order, List<String> failureMessage);
 }

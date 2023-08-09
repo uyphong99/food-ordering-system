@@ -37,6 +37,10 @@
             <artifactId>kafka-avro-serializer</artifactId>
             <version>${kafka-avro-serializer.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.food.ordering.system</groupId>
+            <artifactId>outbox</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
