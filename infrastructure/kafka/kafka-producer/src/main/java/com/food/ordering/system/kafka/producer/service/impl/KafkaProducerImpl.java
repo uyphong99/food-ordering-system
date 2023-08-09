@@ -2,6 +2,7 @@ package com.food.ordering.system.kafka.producer.service.impl;
 
 import com.food.ordering.system.kafka.producer.exception.KafkaProducerException;
 import com.food.ordering.system.kafka.producer.service.KafkaProducer;
+import com.food.ordering.system.outbox.OutboxStatus;
 import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.avro.specific.SpecificRecordBase;
@@ -10,11 +11,10 @@ import org.springframework.kafka.KafkaException;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
-import org.springframework.util.concurrent.ListenableFuture;
-import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.io.Serializable;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 
 @Slf4j
 @Component
@@ -27,14 +27,16 @@ public class KafkaProducerImpl<K extends Serializable, V extends SpecificRecordB
 
 
     @Override
-    public void send(String topicName, K key, V message) {
+    public <O> void send(String topicName, K key, V message, BiConsumer<O, OutboxStatus> callback, O outboxMessage) {
         log.info("Sending message={} to topic={}", message, topicName);
         try {
             CompletableFuture<SendResult<K, V>> kafkaResultFuture = kafkaTemplate.send(topicName, key, message);
+
             kafkaResultFuture.whenComplete((result, ex) -> {
                 if (ex == null) {
                     RecordMetadata metadata = result.getRecordMetadata();
-                    log.info("Received successful response from kafka for order id: {}" +
+                    callback.accept(outboxMessage, OutboxStatus.COMPLETED);
+                    log.info("Publish successful message to kafka for saga id: {}" +
                                     " Topic: {} Partition: {} Offset: {} Timestamp: {}",
                             key,                    // In this project I use order id as key of message
                             metadata.topic(),
@@ -44,6 +46,7 @@ public class KafkaProducerImpl<K extends Serializable, V extends SpecificRecordB
                 } else {
                     log.error("Error while sending " + message +
                             "message {} to topic {}", message.toString(), ex);
+                    callback.accept(outboxMessage, OutboxStatus.FAILED);
                 }
             });
 

@@ -8,10 +8,12 @@ import com.food.ordering.system.kafka.order.avro.model.RestaurantOrderStatus;
 import com.food.ordering.system.order.service.domain.dto.message.PaymentResponse;
 import com.food.ordering.system.order.service.domain.dto.message.RestaurantApprovalResponse;
 import com.food.ordering.system.order.service.domain.entity.Order;
+import com.food.ordering.system.order.service.domain.exception.OrderNotFoundException;
 import com.food.ordering.system.order.service.domain.ports.input.message.listener.restaurantapproval.RestaurantApprovalResponseMessageListener;
 import com.food.ordering.system.order.service.messaging.mapper.OrderMessagingDataMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
@@ -44,17 +46,24 @@ public class RestaurantApprovalResponseKafkaListener implements KafkaConsumer<Re
                 offsets.toString());
 
         messages.forEach(restaurantResponseAvroModel -> {
-            if (OrderApprovalStatus.APPROVED.toString().equals(restaurantResponseAvroModel.getOrderApprovalStatus().toString())) {
-                log.info("Processing successful restaurant order for order id: {}", restaurantResponseAvroModel.getOrderId());
-                RestaurantApprovalResponse restaurantResponse =
-                        orderMessagingDataMapper.restaurantResponseAvroModelToRestaurantResponse(restaurantResponseAvroModel);
-                restaurantApprovalResponseMessageListener.orderApproved(restaurantResponse);
-            } else if (restaurantResponseAvroModel.getOrderApprovalStatus().toString().equals("REJECTED")) {
-                log.info("Fail to process restaurant order for order id: {} with failure message: {}", restaurantResponseAvroModel.getOrderId(),
-                        String.join(Order.FAILURE_MESSAGE_DELIMITER, restaurantResponseAvroModel.getFailureMessages()));
-                RestaurantApprovalResponse restaurantResponse =
-                        orderMessagingDataMapper.restaurantResponseAvroModelToRestaurantResponse(restaurantResponseAvroModel);
-                restaurantApprovalResponseMessageListener.orderRejected(restaurantResponse);
+            try {
+                if (OrderApprovalStatus.APPROVED.toString().equals(restaurantResponseAvroModel.getOrderApprovalStatus().toString())) {
+                    log.info("Processing successful restaurant order for order id: {}", restaurantResponseAvroModel.getOrderId());
+                    RestaurantApprovalResponse restaurantResponse =
+                            orderMessagingDataMapper.restaurantResponseAvroModelToRestaurantResponse(restaurantResponseAvroModel);
+                    restaurantApprovalResponseMessageListener.orderApproved(restaurantResponse);
+                } else if (restaurantResponseAvroModel.getOrderApprovalStatus().toString().equals("REJECTED")) {
+                    log.info("Fail to process restaurant order for order id: {} with failure message: {}", restaurantResponseAvroModel.getOrderId(),
+                            String.join(Order.FAILURE_MESSAGE_DELIMITER, restaurantResponseAvroModel.getFailureMessages()));
+                    RestaurantApprovalResponse restaurantResponse =
+                            orderMessagingDataMapper.restaurantResponseAvroModelToRestaurantResponse(restaurantResponseAvroModel);
+                    restaurantApprovalResponseMessageListener.orderRejected(restaurantResponse);
+                }
+            } catch (OptimisticLockingFailureException e) {
+                log.error("Caught optimistic locking exception in PaymentResponseKafkaListener for order id: {}",
+                        restaurantResponseAvroModel.getOrderId());
+            } catch (OrderNotFoundException e) {
+                log.error("No order found for order id: {}", restaurantResponseAvroModel.getOrderId());
             }
         });
     }

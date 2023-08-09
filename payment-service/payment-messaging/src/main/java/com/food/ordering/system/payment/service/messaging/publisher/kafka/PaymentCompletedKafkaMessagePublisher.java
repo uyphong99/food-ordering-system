@@ -19,7 +19,6 @@ public class PaymentCompletedKafkaMessagePublisher implements PaymentCompletedMe
     private final PaymentMessagingDataMapper paymentMessagingDataMapper;
     private final KafkaProducer<String, PaymentResponseAvroModel> kafkaProducer;
     private final PaymentServiceConfigData paymentServiceConfigData;
-    //private final KafkaMessageHelper kafkaMessageHelper;
     @Override
     public void publish(PaymentCompletedEvent domainEvent) {
         String orderId = domainEvent.getPayment().getOrderId().getValue().toString();

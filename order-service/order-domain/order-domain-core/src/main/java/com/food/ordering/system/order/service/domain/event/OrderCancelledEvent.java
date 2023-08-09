@@ -7,14 +7,7 @@ import java.time.ZonedDateTime;
 
 public class OrderCancelledEvent extends OrderEvent {
 
-    private final DomainEventPublisher<OrderCancelledEvent> orderCancelledEventPublisher;
-    public OrderCancelledEvent(Order order, ZonedDateTime createdAt, DomainEventPublisher<OrderCancelledEvent> orderCancelledEventPublisher) {
+    public OrderCancelledEvent(Order order, ZonedDateTime createdAt) {
         super(order, createdAt);
-        this.orderCancelledEventPublisher = orderCancelledEventPublisher;
-    }
-
-    @Override
-    public void fire() {
-        orderCancelledEventPublisher.publish(this);
     }
 }

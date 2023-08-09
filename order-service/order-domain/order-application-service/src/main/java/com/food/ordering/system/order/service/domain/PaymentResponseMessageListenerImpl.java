@@ -4,7 +4,6 @@ import com.food.ordering.system.order.service.domain.dto.message.PaymentResponse
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.event.OrderPaidEvent;
 import com.food.ordering.system.order.service.domain.ports.input.message.listener.payment.PaymentResponseMessageListener;
-import com.food.ordering.system.order.service.domain.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,12 +15,10 @@ import org.springframework.validation.annotation.Validated;
 @AllArgsConstructor
 public class PaymentResponseMessageListenerImpl implements PaymentResponseMessageListener {
     private final OrderPaymentSaga orderPaymentSaga;
-    private final OrderPaidRestaurantRequestMessagePublisher orderPaidRestaurantRequestMessagePublisher;
     @Override
     public void paymentCompleted(PaymentResponse paymentResponse) {
-        OrderPaidEvent orderPaidEvent = orderPaymentSaga.process(paymentResponse);
-        log.info("Publishing OrderPaidEvent for order id: {}", paymentResponse.getOrderId());
-        orderPaidEvent.fire();
+        orderPaymentSaga.process(paymentResponse);
+        log.info("Order payment saga process operation is completed for order id: {}", paymentResponse.getOrderId());
     }
 
     @Override
