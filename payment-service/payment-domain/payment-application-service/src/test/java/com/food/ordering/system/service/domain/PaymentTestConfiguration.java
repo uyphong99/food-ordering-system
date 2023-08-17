@@ -10,20 +10,6 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication(scanBasePackages = "com.food.ordering.system")
 public class PaymentTestConfiguration {
-    @Bean
-    public PaymentCompletedMessagePublisher paymentCompletedMessagePublisher() {
-        return Mockito.mock(PaymentCompletedMessagePublisher.class);
-    }
-
-    @Bean
-    public PaymentCancelledMessagePublisher paymentCancelledMessagePublisher() {
-        return Mockito.mock(PaymentCancelledMessagePublisher.class);
-    }
-
-    @Bean
-    public PaymentFailedMessagePublisher paymentFailedMessagePublisher() {
-        return Mockito.mock(PaymentFailedMessagePublisher.class);
-    }
 
     @Bean
     public PaymentRepository paymentRepository() {

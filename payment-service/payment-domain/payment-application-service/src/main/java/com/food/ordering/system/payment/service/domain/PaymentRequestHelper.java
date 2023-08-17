@@ -1,13 +1,19 @@
 package com.food.ordering.system.payment.service.domain;
 
 import com.food.ordering.system.domain.valueobject.CustomerId;
+import com.food.ordering.system.domain.valueobject.PaymentStatus;
+import com.food.ordering.system.outbox.OutboxStatus;
 import com.food.ordering.system.payment.service.domain.dto.PaymentRequest;
 import com.food.ordering.system.payment.service.domain.entity.CreditEntry;
 import com.food.ordering.system.payment.service.domain.entity.CreditHistory;
 import com.food.ordering.system.payment.service.domain.entity.Payment;
 import com.food.ordering.system.payment.service.domain.event.PaymentEvent;
 import com.food.ordering.system.payment.service.domain.exception.PaymentApplicationServiceException;
+import com.food.ordering.system.payment.service.domain.exception.PaymentNotFoundException;
 import com.food.ordering.system.payment.service.domain.mapper.PaymentDataMapper;
+import com.food.ordering.system.payment.service.domain.outbox.model.OrderOutboxMessage;
+import com.food.ordering.system.payment.service.domain.outbox.scheduler.OrderOutboxHelper;
+import com.food.ordering.system.payment.service.domain.ports.output.message.publisher.PaymentResponseMessagePublisher;
 import com.food.ordering.system.payment.service.domain.ports.output.repository.CreditEntryRepository;
 import com.food.ordering.system.payment.service.domain.ports.output.repository.CreditHistoryRepository;
 import com.food.ordering.system.payment.service.domain.ports.output.repository.PaymentRepository;
@@ -30,35 +36,55 @@ public class PaymentRequestHelper {
     private final PaymentRepository paymentRepository;
     private final CreditEntryRepository creditEntryRepository;
     private final CreditHistoryRepository creditHistoryRepository;
+    private final OrderOutboxHelper orderOutboxHelper;
+    private final PaymentResponseMessagePublisher paymentResponseMessagePublisher;
 
 
     @Transactional
-    public PaymentEvent persistPayment(PaymentRequest paymentRequest) {
+    public void persistPayment(PaymentRequest paymentRequest) {
+
+        if (publishIfOutboxMessageProcessedForPayment(paymentRequest, PaymentStatus.COMPLETED)) {
+            log.info("An outbox message with saga id: {} is already saved to database!", paymentRequest.getSagaId());
+            return;
+        }
 
         Payment payment = paymentDataMapper.paymentRequestToPayment(paymentRequest);
 
         log.info("Received payment complete event for order id: {}", paymentRequest.getOrderId());
         boolean existPayment = false;
 
+        String sagaId = paymentRequest.getSagaId();
+        PaymentEvent paymentEvent = paymentToPaymentEvent(payment, existPayment);
 
-        return paymentToPaymentEvent(payment, existPayment);
+        orderOutboxHelper.saveOrderOutboxMessage(paymentDataMapper.eventToPayload(paymentEvent),
+                paymentEvent.getPayment().getPaymentStatus(), OutboxStatus.STARTED, UUID.fromString(sagaId));
     }
 
     @Transactional
-    public PaymentEvent persistCancelPayment(PaymentRequest paymentRequest) {
+    public void persistCancelPayment(PaymentRequest paymentRequest) {
+
+        if (publishIfOutboxMessageProcessedForPayment(paymentRequest, PaymentStatus.CANCELLED)) {
+            log.info("An outbox message with saga id: {} is already saved to database!", paymentRequest.getSagaId());
+            return;
+        }
+
         log.info("Received payment rollback event for order id: {}", paymentRequest.getOrderId());
         Optional<Payment> paymentResponse = paymentRepository.findByOrderId(UUID.fromString(paymentRequest.getOrderId()));
         if (paymentResponse.isEmpty()) {
             log.error("Payment with order id: {} could not be found", paymentRequest.getOrderId());
-            throw new PaymentApplicationServiceException("Payment with order id: " +
+            throw new PaymentNotFoundException("Payment with order id: " +
                     paymentRequest.getOrderId() + " could not be found!");
         }
 
         boolean existPayment = true;
 
         Payment payment = paymentResponse.get();
+        String sagaId = paymentRequest.getSagaId();
 
-        return paymentToPaymentEvent(payment, existPayment);
+        PaymentEvent paymentEvent = paymentToPaymentEvent(payment, existPayment);
+
+        orderOutboxHelper.saveOrderOutboxMessage(paymentDataMapper.eventToPayload(paymentEvent),
+                paymentEvent.getPayment().getPaymentStatus(), OutboxStatus.STARTED, UUID.fromString(sagaId));
     }
 
     /**
@@ -72,11 +98,9 @@ public class PaymentRequestHelper {
         PaymentEvent paymentEvent;
 
         if (existPayment) {
-            paymentEvent = paymentDomainService.validateAndCancelPayment(payment, creditEntry, creditHistories,
-                    failureMessages, paymentCancelledEventPublisher, paymentFailedEventPublisher);
+            paymentEvent = paymentDomainService.validateAndCancelPayment(payment, creditEntry, creditHistories, failureMessages);
         } else {
-            paymentEvent = paymentDomainService.validateAndInitiatePayment(payment, creditEntry, creditHistories,
-                    failureMessages, paymentCompletedEventPublisher, paymentFailedEventPublisher);
+            paymentEvent = paymentDomainService.validateAndInitiatePayment(payment, creditEntry, creditHistories, failureMessages);
         }
 
         persistDbObject(payment, creditEntry, creditHistories, failureMessages);
@@ -114,5 +138,16 @@ public class PaymentRequestHelper {
         }
 
         return creditEntry.get();
+    }
+
+    private boolean publishIfOutboxMessageProcessedForPayment(PaymentRequest paymentRequest, PaymentStatus paymentStatus) {
+        Optional<OrderOutboxMessage> orderOutboxMessage = orderOutboxHelper
+                .getCompletedOrderOutboxMessageBySagaIdAndPaymentStatus(UUID.fromString(paymentRequest.getSagaId()), paymentStatus);
+
+        if (orderOutboxMessage.isPresent()) {
+            paymentResponseMessagePublisher.publish(orderOutboxMessage.get(), orderOutboxHelper::updateOutboxMessage);
+            return true;
+        }
+        return false;
     }
 }

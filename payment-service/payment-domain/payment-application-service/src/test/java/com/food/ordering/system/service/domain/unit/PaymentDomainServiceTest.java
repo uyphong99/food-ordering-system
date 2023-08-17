@@ -113,9 +113,7 @@ public class PaymentDomainServiceTest {
 
         PaymentEvent paymentEvent = paymentDomainService.validateAndInitiatePayment(
                 paymentExpectedSuccess, creditEntry,
-                creditHistories, failureMessages,
-                paymentCompletedEventDomainEventPublisher,
-                paymentFailedEventPublisher);
+                creditHistories, failureMessages);
 
         assertEquals(PaymentStatus.COMPLETED, paymentExpectedSuccess.getPaymentStatus());
         assertEquals(PaymentCompletedEvent.class, paymentEvent.getClass());
@@ -133,9 +131,7 @@ public class PaymentDomainServiceTest {
         // Act
         PaymentEvent paymentEvent = paymentDomainService.validateAndInitiatePayment(
                 paymentWithNullPrice, creditEntry,
-                creditHistories, failureMessages,
-                paymentCompletedEventDomainEventPublisher,
-                paymentFailedEventPublisher
+                creditHistories, failureMessages
         );
 
         // Assert
@@ -152,9 +148,7 @@ public class PaymentDomainServiceTest {
 
         PaymentEvent paymentEvent = paymentDomainService.validateAndInitiatePayment(
                 paymentExpectedSuccess, creditEntry,
-                invalidCreditHistories, failureMessages,
-                paymentCompletedEventDomainEventPublisher,
-                paymentFailedEventPublisher
+                invalidCreditHistories, failureMessages
         );
 
         assertEquals(PaymentStatus.FAILED, paymentExpectedSuccess.getPaymentStatus());
@@ -171,9 +165,7 @@ public class PaymentDomainServiceTest {
         // Act
         PaymentEvent paymentEvent = paymentDomainService.validateAndInitiatePayment(
                 paymentWithHighPrice, creditEntry,
-                creditHistories, failureMessages,
-                paymentCompletedEventDomainEventPublisher,
-                paymentFailedEventPublisher
+                creditHistories, failureMessages
         );
 
         // Assert

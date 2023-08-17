@@ -5,6 +5,8 @@ import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.OrderId;
 import com.food.ordering.system.payment.service.domain.dto.PaymentRequest;
 import com.food.ordering.system.payment.service.domain.entity.Payment;
+import com.food.ordering.system.payment.service.domain.event.PaymentEvent;
+import com.food.ordering.system.payment.service.domain.outbox.model.OrderEventPayload;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -27,6 +29,17 @@ public class PaymentDataMapper {
                 .orderId(new OrderId(orderId))
                 .customerId(new CustomerId(customerId))
                 .price(new Money(price))
+                .build();
+    }
+
+    public OrderEventPayload eventToPayload(PaymentEvent paymentEvent) {
+        return OrderEventPayload.builder()
+                .paymentId(paymentEvent.getPayment().getId().toString())
+                .customerId(paymentEvent.getPayment().getCustomerId().toString())
+                .orderId(paymentEvent.getPayment().getOrderId().toString())
+                .createdAt(paymentEvent.getCreatedAt())
+                .paymentStatus(paymentEvent.getPayment().getPaymentStatus().name())
+                .failureMessage(paymentEvent.getFailureMessages())
                 .build();
     }
 }
