@@ -9,7 +9,7 @@ public class OrderOutboxDataAccessMapper {
     public OrderOutboxEntity domainToEntity(OrderOutboxMessage outboxMessage) {
         return OrderOutboxEntity.builder()
                 .id(outboxMessage.getId())
-                .sagaId(outboxMessage.getId())
+                .sagaId(outboxMessage.getSagaId())
                 .createdAt(outboxMessage.getCreatedAt())
                 .type(outboxMessage.getType())
                 .payload(outboxMessage.getPayload())

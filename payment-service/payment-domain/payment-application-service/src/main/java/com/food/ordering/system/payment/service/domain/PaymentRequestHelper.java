@@ -50,11 +50,13 @@ public class PaymentRequestHelper {
 
         Payment payment = paymentDataMapper.paymentRequestToPayment(paymentRequest);
 
-        log.info("Received payment complete event for order id: {}", paymentRequest.getOrderId());
         boolean existPayment = false;
 
         String sagaId = paymentRequest.getSagaId();
         PaymentEvent paymentEvent = paymentToPaymentEvent(payment, existPayment);
+
+        log.info("Received payment complete event for order id: {}", paymentRequest.getOrderId());
+
 
         orderOutboxHelper.saveOrderOutboxMessage(paymentDataMapper.eventToPayload(paymentEvent),
                 paymentEvent.getPayment().getPaymentStatus(), OutboxStatus.STARTED, UUID.fromString(sagaId));

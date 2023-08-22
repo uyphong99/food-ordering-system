@@ -34,9 +34,9 @@ public class PaymentDataMapper {
 
     public OrderEventPayload eventToPayload(PaymentEvent paymentEvent) {
         return OrderEventPayload.builder()
-                .paymentId(paymentEvent.getPayment().getId().toString())
-                .customerId(paymentEvent.getPayment().getCustomerId().toString())
-                .orderId(paymentEvent.getPayment().getOrderId().toString())
+                .paymentId(paymentEvent.getPayment().getId().getValue().toString())
+                .customerId(paymentEvent.getPayment().getCustomerId().getValue().toString())
+                .orderId(paymentEvent.getPayment().getOrderId().getValue().toString())
                 .createdAt(paymentEvent.getCreatedAt())
                 .paymentStatus(paymentEvent.getPayment().getPaymentStatus().name())
                 .failureMessage(paymentEvent.getFailureMessages())
