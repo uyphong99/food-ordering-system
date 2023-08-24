@@ -12,6 +12,7 @@ import com.food.ordering.system.restaurant.service.domain.ports.output.repositor
 import com.food.ordering.system.saga.order.SagaConstants;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZoneId;
@@ -21,6 +22,7 @@ import java.util.Optional;
 import java.util.UUID;
 @Slf4j
 @AllArgsConstructor
+@Component
 public class OrderOutboxHelper {
     private final OrderOutboxRepository orderOutboxRepository;
     private final ObjectMapper objectMapper;
@@ -32,9 +34,8 @@ public class OrderOutboxHelper {
         orderOutboxRepository.save(OrderOutboxMessage.builder()
                         .id(UUID.randomUUID())
                         .sagaId(sagaId)
-                        .orderApprovalStatus(OrderApprovalStatus.valueOf(orderEventPayload.getOrderApprovalStatus()))
                         .outboxStatus(outboxStatus)
-                        .orderApprovalStatus(orderApprovalStatus)
+                        .approvalStatus(orderApprovalStatus)
                         .type(SagaConstants.ORDER_SAGA_NAME)
                         .createdAt(ZonedDateTime.now(ZoneId.of(DomainConstants.UTC)))
                         .payload(createPayloadString(orderEventPayload))

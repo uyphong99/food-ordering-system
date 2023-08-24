@@ -49,10 +49,8 @@ public class OrderPaymentEventKafkaPublisher implements PaymentRequestMessagePub
             log.info("OrderPaymentEventPayload is sent to the kafka for order id: {} and saga id: {}",
                     orderPaymentEventPayload.getOrderId(), sagaId);
         } catch (Exception e) {
-            log.info("Error while sending PrderPaymentEventPayload " +
+            log.info("Error while sending OrderPaymentEventPayload " +
                     "to kafka with order id: {} and saga id: {}, error: {}", orderPaymentEventPayload.getOrderId(), sagaId, e.getMessage());
-
-
         }
     }
 

@@ -54,6 +54,7 @@ public class OrderMessagingDataMapper {
                 .setId(UUID.randomUUID().toString())
                 .setSagaId(sagaId)
                 .setCustomerId(orderPaymentEventPayload.getCustomerId())
+                .setOrderId(orderPaymentEventPayload.getOrderId())
                 .setPrice(orderPaymentEventPayload.getPrice())
                 .setCreatedAt(orderPaymentEventPayload.getCreatedAt().toInstant())
                 .setPaymentOrderStatus(PaymentOrderStatus.valueOf(orderPaymentEventPayload.getPaymentOrderStatus()))
@@ -71,7 +72,7 @@ public class OrderMessagingDataMapper {
                 .setRestaurantOrderStatus(RestaurantOrderStatus.valueOf(orderApprovalEventPayload.getRestaurantOrderStatus()))
                 .setProducts(orderApprovalEventPayload.getProducts().stream().map(orderApprovalEventProduct ->
                         com.food.ordering.system.kafka.order.avro.model.Product.newBuilder()
-                                .setId(orderApprovalEventProduct.getId().toString())
+                                .setId(orderApprovalEventProduct.getId())
                                 .setQuantity(orderApprovalEventProduct.getQuantity()
                                         ).build()).collect(Collectors.toList()))
                 .setPrice(orderApprovalEventPayload.getPrice())

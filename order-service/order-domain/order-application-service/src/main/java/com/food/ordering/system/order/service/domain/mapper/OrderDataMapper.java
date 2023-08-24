@@ -116,7 +116,7 @@ public class OrderDataMapper {
 
     private OrderApprovalEventProduct orderItemDomainToOrderApprovalEventProduct(OrderItem orderItem) {
         return OrderApprovalEventProduct.builder()
-                .id(orderItem.getId().getValue().toString())
+                .id(orderItem.getProduct().getId().getValue().toString())
                 .quantity(orderItem.getQuantity())
                 .build();
     }
