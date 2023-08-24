@@ -50,7 +50,7 @@ public class RestaurantApprovalEventKafkaPublisher implements RestaurantApproval
 
     private OrderEventPayload getOrderEventPayload(String orderEventPayloadString) {
         try {
-            OrderEventPayload orderEventPayload = objectMapper.readValue(orderEventPayloadString, OrderEventPayload.class);
+            return objectMapper.readValue(orderEventPayloadString, OrderEventPayload.class);
         } catch (JsonProcessingException e) {
             log.error("Fail to parse the payload string to OrderEventPayload!");
             throw new RestaurantApplicationServiceException("Fail to parse the payload string to OrderEventPayload!",e);

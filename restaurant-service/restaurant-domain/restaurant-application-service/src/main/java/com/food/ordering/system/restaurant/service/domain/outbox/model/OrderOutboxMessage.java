@@ -20,7 +20,7 @@ public class OrderOutboxMessage {
     private String type;
     private String payload;
     private OutboxStatus outboxStatus;
-    private OrderApprovalStatus orderApprovalStatus;
+    private OrderApprovalStatus approvalStatus;
     private int version;
 
     public void setOutboxStatus(OutboxStatus status) {

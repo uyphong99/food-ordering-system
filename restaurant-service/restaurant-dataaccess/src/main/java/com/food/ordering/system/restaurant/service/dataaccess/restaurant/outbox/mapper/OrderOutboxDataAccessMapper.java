@@ -16,7 +16,7 @@ public class OrderOutboxDataAccessMapper {
                 .type(orderOutboxMessage.getType())
                 .payload(orderOutboxMessage.getPayload())
                 .outboxStatus(orderOutboxMessage.getOutboxStatus())
-                .orderApprovalStatus(orderOutboxMessage.getOrderApprovalStatus())
+                .approvalStatus(orderOutboxMessage.getApprovalStatus())
                 .version(orderOutboxMessage.getVersion())
                 .build();
     }
@@ -27,7 +27,7 @@ public class OrderOutboxDataAccessMapper {
                 .sagaId(orderOutboxEntity.getSagaId())
                 .createdAt(orderOutboxEntity.getCreatedAt())
                 .type(orderOutboxEntity.getType())
-                .orderApprovalStatus(orderOutboxEntity.getOrderApprovalStatus())
+                .approvalStatus(orderOutboxEntity.getApprovalStatus())
                 .outboxStatus(orderOutboxEntity.getOutboxStatus())
                 .payload(orderOutboxEntity.getPayload())
                 .version(orderOutboxEntity.getVersion())

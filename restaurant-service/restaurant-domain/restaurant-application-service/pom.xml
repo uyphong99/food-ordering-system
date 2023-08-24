@@ -36,18 +36,16 @@
             <groupId>com.food.ordering.system</groupId>
             <artifactId>outbox</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>com.food.ordering.system</groupId>
             <artifactId>saga</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>
