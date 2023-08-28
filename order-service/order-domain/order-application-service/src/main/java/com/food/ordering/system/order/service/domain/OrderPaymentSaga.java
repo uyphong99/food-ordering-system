@@ -65,7 +65,7 @@ public class OrderPaymentSaga implements SagaStep<PaymentResponse> {
                 orderPaidEvent.getOrder().getOrderStatus(),
                 sagaStatus,
                 OutboxStatus.STARTED,
-                UUID.fromString(paymentResponse.getPaymentId()));
+                UUID.fromString(paymentResponse.getSagaId()));
 
         log.info("Order with id: {} is paid", orderPaidEvent.getOrder().getId().getValue());
     }
