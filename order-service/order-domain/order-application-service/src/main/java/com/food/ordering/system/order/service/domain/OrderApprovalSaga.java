@@ -119,7 +119,7 @@ public class OrderApprovalSaga implements SagaStep<RestaurantApprovalResponse> {
                 .getPaymentOutboxMessageBySagaIdAndSagaStatus(UUID.fromString(sagaId), SagaStatus.PROCESSING);
         if (orderPaymentOutboxMessageResponse.isEmpty()) {
             throw new OrderDomainException("Payment outbox message cannot be found in " +
-                    SagaStatus.PROCESSING.name() + " state");
+                    SagaStatus.PROCESSING.name() + "saga state");
         }
         OrderPaymentOutboxMessage orderPaymentOutboxMessage = orderPaymentOutboxMessageResponse.get();
         orderPaymentOutboxMessage.setProcessedAt(ZonedDateTime.now(ZoneId.of(UTC)));

@@ -34,7 +34,7 @@ public class RestaurantApprovalRequestKafkaListener implements KafkaConsumer<Res
                 offsets.toString());
 
         messages.forEach(restaurantApprovalRequestAvroModel -> {
-            log.info("Processing order approval for order id: {}", restaurantApprovalRequestAvroModel.getOrderId());
+            log.info("Processing order approval for saga id: {}", restaurantApprovalRequestAvroModel.getSagaId());
             RestaurantApprovalRequest restaurantApprovalRequest = restaurantMessagingDataMapper
                     .approvalRequestAvroModelToApprovalRequest(restaurantApprovalRequestAvroModel);
             restaurantApprovalRequestMessageListener.approveOrder(restaurantApprovalRequest);

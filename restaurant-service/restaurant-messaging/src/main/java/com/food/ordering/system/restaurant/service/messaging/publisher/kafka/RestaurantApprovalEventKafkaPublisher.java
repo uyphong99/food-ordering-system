@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.food.ordering.system.kafka.order.avro.model.RestaurantApprovalResponseAvroModel;
 import com.food.ordering.system.kafka.producer.service.KafkaProducer;
-import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.outbox.OutboxStatus;
 import com.food.ordering.system.restaurant.service.domain.config.RestaurantServiceConfigData;
 import com.food.ordering.system.restaurant.service.domain.exception.RestaurantApplicationServiceException;
