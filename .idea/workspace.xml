@@ -5,17 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beb3eda3-ed66-49c8-8819-913bbca26eb4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-application/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-container/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-container/src/main/java/com/food/ordering/system/customer/service/BeanConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-dataaccess/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-domain-core/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-messaging/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-model/src/main/resources/avro/customer.avsc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/order-container/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-container/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/OrderApprovalSaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/OrderApprovalSaga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/OrderPaymentSaga.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/OrderPaymentSaga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/listener/kafka/PaymentResponseKafkaListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/listener/kafka/PaymentResponseKafkaListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/listener/kafka/RestaurantApprovalResponseKafkaListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/listener/kafka/RestaurantApprovalResponseKafkaListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-service/payment-container/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-container/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-service/payment-messaging/src/main/java/com/food/ordering/system/payment/service/messaging/listener/kafka/PaymentRequestKafkaListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/payment-service/payment-messaging/src/main/java/com/food/ordering/system/payment/service/messaging/listener/kafka/PaymentRequestKafkaListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant-service/restaurant-container/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant-service/restaurant-container/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant-service/restaurant-messaging/src/main/java/com/food/ordering/system/restaurant/service/messaging/listener/kafka/RestaurantApprovalRequestKafkaListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant-service/restaurant-messaging/src/main/java/com/food/ordering/system/restaurant/service/messaging/listener/kafka/RestaurantApprovalRequestKafkaListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant-service/restaurant-messaging/src/main/java/com/food/ordering/system/restaurant/service/messaging/publisher/kafka/RestaurantApprovalEventKafkaPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant-service/restaurant-messaging/src/main/java/com/food/ordering/system/restaurant/service/messaging/publisher/kafka/RestaurantApprovalEventKafkaPublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/food/ordering/system/customer/service/CustomerServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/customer-container/src/main/java/com/food/ordering/system/customer/service/CustomerServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/customer-container/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/src/main/resources/init-data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/src/main/resources/init-schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/customer-container/src/main/resources/init-schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,32 +64,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ibm/microservice-project/food-ordering-system/payment-service/payment-domain/payment-domain-core/src/main/java/com/food/ordering/system/payment/service/domain/exception&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;e593d18de38d78fec6266548a29dc015&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "jdk.selected.JAVA_MODULE": "jbr-17",
+    "last_opened_file_path": "C:/Users/ibm/microservice-project/food-ordering-system/customer-service/customer-container",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "spring.configuration.checksum": "e593d18de38d78fec6266548a29dc015",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\customer-service\customer-container" />
+      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\customer-service\customer-container\src\main\resources" />
+      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\customer-service\customer-container\src\main\java\com\food\ordering\system\customer\service" />
+      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\infrastructure\kafka\kafka-model\src\main\resources\avro" />
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\payment-service\payment-domain\payment-domain-core\src\main\java\com\food\ordering\system\payment\service\domain\exception" />
-      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\order-service\order-container\src\test\resources\sql" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.food.ordering.system.restaurant.service.dataaccess.restaurant.outbox.exception" />
@@ -170,6 +182,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CustomerServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="customer-container" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.food.ordering.system.customer.service.CustomerServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CustomerServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="customer-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.food.ordering.system.customer.service.CustomerServiceApplication" />
@@ -230,7 +249,8 @@
       <workItem from="1691979706003" duration="17856000" />
       <workItem from="1692440337411" duration="53591000" />
       <workItem from="1692704300975" duration="60201000" />
-      <workItem from="1693134121374" duration="12179000" />
+      <workItem from="1693134121374" duration="14469000" />
+      <workItem from="1693495022633" duration="10672000" />
     </task>
     <servers />
   </component>
