@@ -5,23 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beb3eda3-ed66-49c8-8819-913bbca26eb4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/customer-service/customer-application/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer-service/customer-container/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer-service/customer-container/src/main/java/com/food/ordering/system/customer/service/BeanConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer-service/customer-dataaccess/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-domain-core/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer-service/customer-messaging/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-model/src/main/resources/avro/customer.avsc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-application/src/main/java/application/handler/CustomerGlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-application/src/main/java/application/rest/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-dataaccess/src/main/java/com/food/ordering/system/customer/service/dataaccess/customer/adapter/CustomerRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-dataaccess/src/main/java/com/food/ordering/system/customer/service/dataaccess/customer/entity/CustomerEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-dataaccess/src/main/java/com/food/ordering/system/customer/service/dataaccess/customer/exception/CustomerDataaccessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-dataaccess/src/main/java/com/food/ordering/system/customer/service/dataaccess/customer/mapper/CustomerDataAccessMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-dataaccess/src/main/java/com/food/ordering/system/customer/service/dataaccess/customer/repository/CustomerJpaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/src/main/java/com/food/ordering/system/customer/service/domain/CustomerApplicationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/src/main/java/com/food/ordering/system/customer/service/domain/CustomerCreateCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/src/main/java/com/food/ordering/system/customer/service/domain/config/CustomerServiceConfigData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/src/main/java/com/food/ordering/system/customer/service/domain/create/CreateCustomerCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/src/main/java/com/food/ordering/system/customer/service/domain/create/CreateCustomerResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/src/main/java/com/food/ordering/system/customer/service/domain/mapper/CustomerDataMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/src/main/java/com/food/ordering/system/customer/service/domain/port/input/service/CustomerApplicationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/src/main/java/com/food/ordering/system/customer/service/domain/port/output/message/publisher/CustomerMessagePublisher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/src/main/java/com/food/ordering/system/customer/service/domain/port/output/repository/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-domain-core/src/main/java/com/food/ordering/system/customer/service/domain/CustomerDomainService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-domain-core/src/main/java/com/food/ordering/system/customer/service/domain/CustomerDomainServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-domain-core/src/main/java/com/food/ordering/system/customer/service/domain/entity/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-domain-core/src/main/java/com/food/ordering/system/customer/service/domain/event/CustomerCreatedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-domain-core/src/main/java/com/food/ordering/system/customer/service/domain/exception/CustomerDomainException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-messaging/src/main/java/com/food/ordering/system/customer/service/messaging/mapper/CustomerMessagingDataMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-service/customer-messaging/src/main/java/com/food/ordering/system/customer/service/messaging/publisher/kafka/CustomerCreatedEventKafkaPublisher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/CustomerMessageListenerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/dto/message/CustomerModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/input/message/listener/customer/CustomerMessageListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/listener/kafka/CustomerKafkaListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/food/ordering/system/customer/service/CustomerServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/customer-container/src/main/java/com/food/ordering/system/customer/service/CustomerServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/customer-container/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/resources/init-data.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/resources/init-schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/customer-container/src/main/resources/init-schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/customer-application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/customer-application/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/customer-domain/customer-application-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/service/KafkaProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/service/KafkaProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/service/impl/KafkaProducerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/kafka/kafka-producer/src/main/java/com/food/ordering/system/kafka/producer/service/impl/KafkaProducerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-container/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-container/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/customer/adapter/CustomerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/customer/adapter/CustomerRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/customer/entity/CustomerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/customer/entity/CustomerEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/customer/mapper/CustomerDataAccessMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-dataaccess/src/main/java/com/food/ordering/system/order/service/dataaccess/customer/mapper/CustomerDataAccessMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/mapper/OrderDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/mapper/OrderDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/main/java/com/food/ordering/system/order/service/domain/ports/output/repository/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/test/java/com/food/ordering/system/order/service/domain/OrderApplicationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-application-service/src/test/java/com/food/ordering/system/order/service/domain/OrderApplicationServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-domain/order-domain-core/src/main/java/com/food/ordering/system/order/service/domain/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-domain/order-domain-core/src/main/java/com/food/ordering/system/order/service/domain/entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/mapper/OrderMessagingDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/mapper/OrderMessagingDataMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,13 +74,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="2Ss2dM0FjVwgACtW7XkcpwkWoVI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -75,9 +96,10 @@
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "cqrs",
     "go.import.settings.migrated": "true",
     "jdk.selected.JAVA_MODULE": "jbr-17",
-    "last_opened_file_path": "C:/Users/ibm/microservice-project/food-ordering-system/customer-service/customer-container",
+    "last_opened_file_path": "C:/Users/ibm/microservice-project/food-ordering-system",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -85,26 +107,29 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "spring.configuration.checksum": "e593d18de38d78fec6266548a29dc015",
+    "spring.configuration.checksum": "8854d31531f59993869e94b438b4e328",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\customer-service\customer-application\src\main\java" />
+      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\customer-service\customer-domain\customer-application-service\src\main\java\com\food\ordering\system\customer\service\domain" />
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\customer-service\customer-container" />
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\customer-service\customer-container\src\main\resources" />
       <recent name="C:\Users\ibm\microservice-project\food-ordering-system\customer-service\customer-container\src\main\java\com\food\ordering\system\customer\service" />
-      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\infrastructure\kafka\kafka-model\src\main\resources\avro" />
-      <recent name="C:\Users\ibm\microservice-project\food-ordering-system\payment-service\payment-domain\payment-domain-core\src\main\java\com\food\ordering\system\payment\service\domain\exception" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.food.ordering.system.restaurant.service.dataaccess.restaurant.outbox.exception" />
-      <recent name="com.food.ordering.system.restaurant.service.domain.outbox.model" />
+      <recent name="com.food.ordering.system.customer.service.dataaccess.customer.repository" />
+      <recent name="com.food.ordering.system.customer.service.dataaccess.customer.mapper" />
+      <recent name="com.food.ordering.system.customer.service.dataaccess.customer.exception" />
+      <recent name="com.food.ordering.system.customer.service.domain.port.output.repository" />
+      <recent name="com.food.ordering.system.customer.service.domain.port.output.message.publisher" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.RestaurantServiceApplication">
-    <configuration name="OrderPaymentSagaTest.doubleProcessPaymentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="order-container" />
+  <component name="RunManager" selected="JUnit.OrderApplicationServiceTest">
+    <configuration name="OrderApplicationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="order-application-service" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.food.ordering.system.order.service.domain.*" />
@@ -112,9 +137,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.food.ordering.system.order.service.domain" />
-      <option name="MAIN_CLASS_NAME" value="com.food.ordering.system.order.service.domain.OrderPaymentSagaTest" />
-      <option name="METHOD_NAME" value="doubleProcessPaymentTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="com.food.ordering.system.order.service.domain.OrderApplicationServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -219,11 +243,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrderApplicationServiceTest" />
         <item itemvalue="JUnit.PaymentRequestMessageListenerTest.testDoublePaymentWithThreads" />
         <item itemvalue="JUnit.PaymentRequestMessageListenerTest.testDoublePayment" />
         <item itemvalue="JUnit.PaymentRequestMessageListenerTest" />
         <item itemvalue="JUnit.OrderPaymentSagaTest.testDoublePaymentWithLatch" />
-        <item itemvalue="JUnit.OrderPaymentSagaTest.doubleProcessPaymentTest" />
       </list>
     </recent_temporary>
   </component>
@@ -250,7 +274,9 @@
       <workItem from="1692440337411" duration="53591000" />
       <workItem from="1692704300975" duration="60201000" />
       <workItem from="1693134121374" duration="14469000" />
-      <workItem from="1693495022633" duration="10672000" />
+      <workItem from="1693495022633" duration="39805000" />
+      <workItem from="1693995178211" duration="1468000" />
+      <workItem from="1694159745936" duration="2421000" />
     </task>
     <servers />
   </component>
@@ -278,9 +304,9 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/food_ordering_system$All_in_order_messaging.ic" NAME="All in order-messaging Coverage Results" MODIFIED="1685785758703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/food_ordering_system$OrderApplicationServiceTest.ic" NAME="OrderApplicationServiceTest Coverage Results" MODIFIED="1682785030112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.food.ordering.system.order.service.domain.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/food_ordering_system$All_in_order_messaging.ic" NAME="All in order-messaging Coverage Results" MODIFIED="1685785758703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
