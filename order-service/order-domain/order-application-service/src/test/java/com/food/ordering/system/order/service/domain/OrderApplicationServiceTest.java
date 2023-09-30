@@ -63,7 +63,9 @@ public class OrderApplicationServiceTest {
                                        @Autowired OrderDataMapper orderDataMapper,
                                        @Autowired OrderRepository orderRepository,
                                        @Autowired CustomerRepository customerRepository,
-                                       @Autowired RestaurantRepository restaurantRepository, PaymentOutboxRepository paymentOutboxRepository, ObjectMapper objectMapper) {
+                                       @Autowired RestaurantRepository restaurantRepository,
+                                       @Autowired PaymentOutboxRepository paymentOutboxRepository,
+                                       @Autowired ObjectMapper objectMapper) {
         this.orderApplicationService = orderApplicationService;
         this.orderDataMapper = orderDataMapper;
         this.orderRepository = orderRepository;
@@ -147,8 +149,7 @@ public class OrderApplicationServiceTest {
                                 .build()))
                 .build();
 
-        Customer customer = new Customer();
-        customer.setId(new CustomerId(CUSTOMER_ID));
+        Customer customer = new Customer(new CustomerId(CUSTOMER_ID));
 
         Restaurant restaurantResponse = Restaurant.builder()
                 .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))

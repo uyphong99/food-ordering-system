@@ -15,4 +15,6 @@ public interface KafkaProducer<K extends Serializable, V extends SpecificRecordB
      * */
     <O> void send(String topicName, K key, V message, BiConsumer<O, OutboxStatus> callback, O outboxMessage);
 
+    void sendWithoutCallback(String topicName, K key, V message);
+
 }

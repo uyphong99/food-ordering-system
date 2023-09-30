@@ -19,4 +19,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         return customerJpaRepository.findById(customerId)
                 .map(customerDataAccessMapper::customerEntityToCustomer);
     }
+
+    @Override
+    public Customer save(Customer customer) {
+        return customerDataAccessMapper
+                .customerEntityToCustomer(customerJpaRepository.save(customerDataAccessMapper.domainToEntity(customer)));
+    }
 }

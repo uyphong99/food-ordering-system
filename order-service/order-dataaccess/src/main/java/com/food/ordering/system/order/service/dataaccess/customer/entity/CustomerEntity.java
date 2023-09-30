@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table(name = "order_customer_m_view", schema = "customer")
+@Table(name = "customers")
 @Entity
 public class CustomerEntity {
     @Id
