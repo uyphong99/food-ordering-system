@@ -39,7 +39,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>${project.groupId}/custpmer.service:${project.version}</name>
+                        <name>uyphong99/food.ordering.system.customer.service:latest</name>
                     </image>
                 </configuration>
                 <executions>
