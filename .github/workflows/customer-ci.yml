@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Customer service CI
 
 on:
   push:
@@ -22,10 +22,10 @@ jobs:
           distribution: 'adopt'
 
       - name: Run Unit Tests
-        run: mvn test
+        run: mvn test -pl customer-service
 
       - name: Build Docker image
-        run: mvn spring-boot:build-image -Pprod
+        run: mvn spring-boot:build-image -Pprod -pl customer-service
 
       - name: Log in to Docker Hub
         run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
