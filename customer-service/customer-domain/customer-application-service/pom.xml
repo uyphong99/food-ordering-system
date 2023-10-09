@@ -11,6 +11,9 @@
 
     <artifactId>customer-application-service</artifactId>
 
+    <packaging>jar</packaging>
+
+
     <dependencies>
         <dependency>
             <groupId>com.food.ordering.system</groupId>
@@ -50,6 +53,13 @@
                             <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>

@@ -9,6 +9,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <packaging>jar</packaging>
+
     <artifactId>customer-container</artifactId>
 
     <dependencies>
@@ -38,24 +40,44 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
+                <!--configuration>
                     <image>
                         <name>${project.groupId}/customer.service:${project.version}</name>
                     </image>
-                </configuration>
-                <executions>
+                </configuration-->
+                <!--executions>
                     <execution>
                         <phase>install</phase>
                         <goals>
                             <goal>build-image</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions-->
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version> <!-- Use an appropriate version -->
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.food.ordering.system.customer.service</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>

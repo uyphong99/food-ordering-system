@@ -5,9 +5,8 @@ on:
     branches:
       - main
 
-
 jobs:
-  build-and-push:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,18 +19,19 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Run Unit Tests
-        run: mvn test -pl customer-service
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
 
-      - name: Build Docker image
-        run: mvn spring-boot:build-image -Pprod -pl customer-service
 
       - name: Log in to Docker Hub
-        run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Push Docker image to Docker Hub
-        run: docker push uyphong99/food.ordering.system.customer.service:latest
-
-      - name: Clean up
-        run: docker logout
-
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: uyphong99/fos.customer-service:latest
+          context: ./customer-service/customer-container
