@@ -11,6 +11,8 @@
 
     <artifactId>common-dataaccess</artifactId>
 
+    <packaging>jar</packaging>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

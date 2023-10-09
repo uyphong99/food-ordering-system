@@ -37,7 +37,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
+                <!--<configuration>
                     <image>
                         <name>uyphong99/food.ordering.system.customer.service:latest</name>
                     </image>
@@ -49,7 +49,7 @@
                             <goal>build-image</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions> -->
             </plugin>
         </plugins>
     </build>
