@@ -20,8 +20,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
-
+        run: mvn -B package --file food-ordering-system/pom.xml -pl customer-service -am -DskipTests
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
