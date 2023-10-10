@@ -1,13 +1,8 @@
-FROM eclipse-temurin:17-jre as builder
-WORKDIR application
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} application.jar
-RUN java -Djarmode=layertools -jar application.jar extract
-
-FROM eclipse-temurin:17-jre
-WORKDIR application
-COPY --from=builder application/dependencies/ ./
-COPY --from=builder application/spring-boot-loader/ ./
-COPY --from=builder application/snapshot-dependencies/ ./
-COPY --from=builder application/application/ ./
-ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+FROM eclipse-temurin:17-jdk-alpine
+VOLUME /tmp
+ARG EXTRACTED=/workspace/app/target/extracted
+COPY ${EXTRACTED}/dependencies/ ./
+COPY ${EXTRACTED}/spring-boot-loader/ ./
+COPY ${EXTRACTED}/snapshot-dependencies/ ./
+COPY ${EXTRACTED}/application/ ./
+ENTRYPOINT ["java","org.springframework.boot.loader.JarLauncher"]
