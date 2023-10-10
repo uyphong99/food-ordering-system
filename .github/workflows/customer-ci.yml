@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "./github/workflows/customer-ci.yml"
+      - "customer-service/**"
 
 jobs:
   build:
@@ -21,7 +24,7 @@ jobs:
 
       - name: Build with Maven
         run: |
-          mvn -pl customer-service -am clean install -DskipTests
+          mvn clean install -DskipTests -f customer-service
           mkdir customer-service/customer-container/target/extracted
           java -Djarmode=layertools -jar customer-service/customer-container/target/*.jar extract --destination customer-service/customer-container/target/extracted
 
