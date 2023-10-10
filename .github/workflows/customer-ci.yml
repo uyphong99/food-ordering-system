@@ -20,7 +20,12 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Maven
-        run: mvn -pl customer-service -am clean install -DskipTests
+        run: |
+          mvn -pl customer-service -am clean install -DskipTests
+          mkdir customer-service/customer-container/target/extracted
+          java -Djarmode=layertools -jar customer-service/customer-container/target/*.jar extract --destination customer-service/customer-container/target/extracted
+
+
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
