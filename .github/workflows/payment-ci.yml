@@ -1,0 +1,42 @@
+name: payment service CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/payment-ci.yml"
+      - "payment-service/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+
+      - name: Build with Maven
+        run: |
+          mvn clean install -DskipTests
+          mkdir payment-service/payment-container/target/dependency
+          cd payment-service/payment-container/target/dependency; jar -xf ../*.jar
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: uyphong99/fos.payment-service:latest
+          context: ./payment-service/payment-container
