@@ -1,0 +1,42 @@
+name: Order service CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/order-ci.yml"
+      - "order-service/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+
+      - name: Build with Maven
+        run: |
+          mvn clean install -DskipTests
+          mkdir order-service/order-container/target/dependency
+          cd order-service/order-container/target/dependency; jar -xf ../*.jar
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: uyphong99/fos.order-service:latest
+          context: ./order-service/order-container
