@@ -24,7 +24,7 @@ jobs:
 
       - name: Build with Maven
         run: |
-          mvn clean install -DskipTests -f customer-service
+          mvn clean install -DskipTests
           mkdir customer-service/customer-container/target/extracted
           java -Djarmode=layertools -jar customer-service/customer-container/target/*.jar extract --destination customer-service/customer-container/target/extracted
 
