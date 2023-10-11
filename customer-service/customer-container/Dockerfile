@@ -1,8 +1,8 @@
 FROM eclipse-temurin:17-jdk-alpine
 VOLUME /tmp
-ARG EXTRACTED=/workspace/app/target/extracted
-COPY ${EXTRACTED}/dependencies/ ./
-COPY ${EXTRACTED}/spring-boot-loader/ ./
-COPY ${EXTRACTED}/snapshot-dependencies/ ./
-COPY ${EXTRACTED}/application/ ./
-ENTRYPOINT ["java","org.springframework.boot.loader.JarLauncher"]
+RUN mkdir app
+ARG DEPENDENCY=target/dependency
+COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY ${DEPENDENCY}/META-INF /app/META-INF
+COPY ${DEPENDENCY}/BOOT-INF/classes /app
+ENTRYPOINT ["java","-cp","app:app/lib/*","hello.Application"]
