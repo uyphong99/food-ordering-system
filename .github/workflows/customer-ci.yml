@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "./github/workflows/customer-ci.yml"
+      - ".github/workflows/customer-ci.yml"
       - "customer-service/**"
 
 jobs:
